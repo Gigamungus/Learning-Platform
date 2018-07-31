@@ -1,0 +1,56 @@
+.App {
+    min-height: 100vh;
+}
+
+.App .Navbar {
+    height: 3vh;
+}
+
+.App .Sidebar {
+    width: 25%;
+    min-height: 87vh;
+}
+
+.App .bodyContainer {
+    display: flex;
+}
+
+.App .Body {
+    min-height: 87vh;
+    width: 75%;
+}
+
+.App .Footer {
+    height: 10vh;
+}
+
+@media only screen and (min-width: 768px) {}
+
+@media only screen and (min-width: 1024px) {
+    .App .Sidebar {
+        width: 20%;
+    }
+    .App .Body {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    .App .Sidebar {
+        width: 15%;
+    }
+    .App .Body {
+        width: 85%;
+        height: 91vh;
+    }
+    .App .Sidebar {
+        height: 91vh;
+    }
+    .App .Footer {
+        height: 6vh;
+    }
+}
+
+.App .full-width {
+    width: 100%;
+}

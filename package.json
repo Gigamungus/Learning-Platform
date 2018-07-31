@@ -22,5 +22,7 @@
   "bugs": {
     "url": "https://github.com/That4wkwardGuy/Learning-Platform/issues"
   },
-  "homepage": "https://github.com/That4wkwardGuy/Learning-Platform#readme"
+  "homepage": "https://github.com/That4wkwardGuy/Learning-Platform#readme",
+  "dependencies": {
+  }
 }
