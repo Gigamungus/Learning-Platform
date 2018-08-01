@@ -4,7 +4,9 @@
   "description": "learning site for creating and sharing tutorials",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-react": "cd client/ && npm run start",
+    "start": "concurrently \"nodemon\" \"npm run start-react\" "
   },
   "repository": {
     "type": "git",
@@ -24,5 +26,9 @@
   },
   "homepage": "https://github.com/That4wkwardGuy/Learning-Platform#readme",
   "dependencies": {
+    "concurrently": "^3.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.6",
+    "nodemon": "^1.18.3"
   }
 }
