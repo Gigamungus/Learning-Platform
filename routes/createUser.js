@@ -1,6 +1,5 @@
 const User = require("./../schemas/UserSchema");
 const bcrypt = require("bcrypt");
-const secretOrKey = require("./../config/secrets").secret;
 
 const createUser = (req, res) => {
   let error = { error: undefined };
