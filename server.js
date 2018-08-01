@@ -1,11 +1,19 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+let port = process.env.PORT || 5000;
 const mongoose = require("mongoose");
-const DBURL = require("./config/secrets").DBURL;
 const bodyParser = require("body-parser");
 const authStrat = require("./auth-strategy/jwtStrategy");
 const passport = require("passport");
+const secrets = {
+  secret: process.env.secret || require("./config/passwords").secret,
+  DBURL: process.env.DBURL || require("./config/secrets").DBURL
+};
+const DBURL = secrets.DBURL;
+
+//serve react
+const path = require("path");
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 //routes
 const createUser = require("./routes/createUser");
