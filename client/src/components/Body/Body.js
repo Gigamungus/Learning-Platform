@@ -6,7 +6,22 @@ class Body extends Component {
   render() {
     let classes = ["Body"];
     if (!this.props.sidebarVisible) classes.push("full-width");
-    return <div className={classes.join(" ")}>this is the body</div>;
+    return (
+      <div className={classes.join(" ")}>
+        lorem ipsum dalor amet setlorem ipsum dalor amet set lorem ipsum dalor
+        amet set lorem ipsum dalor amet set lorem ipsum dalor amet set lorem
+        ipsum dalor amet set lorem ipsum dalor amet set lorem ipsum dalor amet
+        set lorem ipsum dalor amet set lorem ipsum dalor amet setlorem ipsum
+        dalor amet setlorem ipsum dalor amet setlorem ipsum dalor amet setlorem
+        ipsum dalor amet setlorem ipsum dalor amet setlorem ipsum dalor amet
+        setlorem ipsum dalor amet setlorem ipsum dalor amet setlorem ipsum dalor
+        amet setlorem ipsum dalor amet setlorem ipsum dalor amet setlorem ipsum
+        dalor amet setlorem ipsum dalor amet setlorem ipsum dalor amet setlorem
+        ipsum dalor amet setlorem ipsum dalor amet setlorem ipsum dalor amet
+        setlorem ipsum dalor amet setlorem ipsum dalor amet setlorem ipsum dalor
+        amet setlorem ipsum dalor amet set
+      </div>
+    );
   }
 }
 

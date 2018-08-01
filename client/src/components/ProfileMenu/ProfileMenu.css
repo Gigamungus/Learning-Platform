@@ -1,0 +1,47 @@
+.ProfileMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ProfileMenu img {
+    max-height: 50%;
+    width: 100%;
+}
+
+.ProfileMenu .hidden {
+    display: none;
+}
+
+.ProfileMenu .profileDropdown {
+    display: inline-block;
+    position: absolute;
+    top: 7vh;
+    right: 5vw;
+    background-color: #777777;
+    width: 25vw;
+}
+
+.ProfileMenu .Option {
+    width: 100%;
+    height: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+    .ProfileMenu .profileDropdown {
+        top: 5vh;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .ProfileMenu .profileDropdown {
+        top: 4vh;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    .ProfileMenu .profileDropdown {
+        top: 3vh;
+    }
+}

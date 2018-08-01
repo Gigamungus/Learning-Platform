@@ -1,6 +1,4 @@
 //actions
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 
-export const toggleSidebarCreator = () => ({
-  type: TOGGLE_SIDEBAR
-});
+export const TOGGLE_PROFILE_OPTIONS = "TOGGLE_PROFILE_OPTIONS";

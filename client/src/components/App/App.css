@@ -3,12 +3,12 @@
 }
 
 .App .Navbar {
-    height: 3vh;
+    height: 5vh;
 }
 
 .App .Sidebar {
-    width: 25%;
-    min-height: 87vh;
+    width: 50%;
+    min-height: 85vh;
 }
 
 .App .bodyContainer {
@@ -16,35 +16,53 @@
 }
 
 .App .Body {
-    min-height: 87vh;
-    width: 75%;
+    min-height: 85vh;
+    width: 50%;
 }
 
 .App .Footer {
-    height: 10vh;
+    height: 8vh;
 }
 
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) {
+    .App .Sidebar {
+        width: 30%;
+    }
+    .App .Navbar {
+        height: 3vh;
+    }
+    .App .Body {
+        width: 70%;
+        min-height: 87vh;
+    }
+}
 
 @media only screen and (min-width: 1024px) {
+    .App .Navbar {
+        height: 2vh;
+    }
     .App .Sidebar {
         width: 20%;
     }
     .App .Body {
         width: 80%;
+        min-height: 88vh;
     }
 }
 
 @media only screen and (min-width: 2560px) {
+    .App .Navbar {
+        height: 1vh;
+    }
     .App .Sidebar {
         width: 15%;
     }
     .App .Body {
         width: 85%;
-        height: 91vh;
+        height: 92vh;
     }
     .App .Sidebar {
-        height: 91vh;
+        height: 92vh;
     }
     .App .Footer {
         height: 6vh;

@@ -1,4 +1,3 @@
-//actions
 import { TOGGLE_SIDEBAR } from "./../actionCreators";
 
 let initialScreenWidth = window.innerWidth;

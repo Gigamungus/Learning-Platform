@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Navbar.css";
-import InputContainer from "./../Input/InputContainer";
+import Input from "./../Input/Input";
 import ProfileMenuContainer from "./../ProfileMenu/ProfileMenuContainer";
 import PropTypes from "prop-types";
 
@@ -9,8 +9,10 @@ class Navbar extends Component {
     return (
       <div className="Navbar">
         <i className="fas fa-bars" onClick={this.props.toggleSidebar} />
-        <InputContainer />
-        <ProfileMenuContainer />
+        <Input placeholder={"search lessons"} />
+        <div className="profileMenu">
+          <ProfileMenuContainer />
+        </div>
       </div>
     );
   }

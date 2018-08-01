@@ -13,6 +13,7 @@ class App extends Component {
         <div className="bodyContainer">
           <SidebarContainer />
           <BodyContainer />
+          
         </div>
         <FooterContainer />
       </div>

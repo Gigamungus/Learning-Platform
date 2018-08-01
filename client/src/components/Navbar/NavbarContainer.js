@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Navbar from "./Navbar";
-import { toggleSidebarCreator } from "./../../redux/actionCreators";
+import { toggleSidebarCreator } from "./../../redux/actionCreators/sidebarCreators";
 
 const mapStateToProps = state => ({});
 
