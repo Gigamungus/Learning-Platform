@@ -47,6 +47,10 @@ app.post("/api/loginuser", (req, res) => {
   loginUser(req, res);
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 const server = app.listen(port, () => {
   console.log(`serving app on port ${port}`);
 });
