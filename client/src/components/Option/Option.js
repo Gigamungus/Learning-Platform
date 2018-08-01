@@ -11,7 +11,7 @@ class Option extends Component {
     );
   }
 }
-Option.PropTypes = {
+Option.propTypes = {
   text: PropTypes.string,
   onClick: PropTypes.func
 };
