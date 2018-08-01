@@ -24,6 +24,5 @@
   },
   "homepage": "https://github.com/That4wkwardGuy/Learning-Platform#readme",
   "dependencies": {
-    "react-router-dom": "^4.3.1"
   }
 }
