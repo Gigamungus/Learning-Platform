@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Button from "./../Button/Button";
 import img from "./../../images/no-image-user.jpg";
 import Option from "./../Option/Option";
+import SigninFormContainer from "./../SigninForm/SigninFormContainer";
 
 class ProfileMenu extends Component {
   render() {
@@ -23,7 +24,12 @@ class ProfileMenu extends Component {
         </div>
       </div>
     ) : (
-      <Button text="sign in" />
+      <div className="ProfileMenu">
+        <Button text="sign in" onClick={this.props.toggleProfileOptions} />
+        <div className={profileMenuClass}>
+          <SigninFormContainer />
+        </div>
+      </div>
     );
   }
 }

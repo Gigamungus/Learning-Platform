@@ -25,10 +25,6 @@
     width: 30%;
 }
 
-.Navbar .profileMenu .ProfileMenu {
-    width: 70px;
-}
-
 @media only screen and (min-width: 768px) {
     .Navbar i {
         width: 10%;
@@ -43,7 +39,7 @@
         width: 20%;
     }
     .Navbar .profileMenu .ProfileMenu {
-        width: 90px;
+        /* width: 90px; */
     }
 }
 

@@ -1,47 +1,57 @@
 .ProfileMenu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .ProfileMenu img {
-    max-height: 50%;
-    width: 100%;
+  max-height: 50%;
+  width: 100%;
 }
 
 .ProfileMenu .hidden {
-    display: none;
+  display: none;
 }
 
 .ProfileMenu .profileDropdown {
-    display: inline-block;
-    position: absolute;
-    top: 7vh;
-    right: 5vw;
-    background-color: #777777;
-    width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 7vh;
+  right: 5vw;
+  background-color: #999999;
+  width: 60vw;
 }
 
 .ProfileMenu .Option {
-    width: 100%;
-    height: 50px;
+  width: 100%;
+  height: 50px;
+}
+
+.ProfileMenu .Input {
+    align-self: center;
 }
 
 @media only screen and (min-width: 768px) {
-    .ProfileMenu .profileDropdown {
-        top: 5vh;
-    }
+  .ProfileMenu .profileDropdown {
+    top: 5vh;
+    width: 35vw;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-    .ProfileMenu .profileDropdown {
-        top: 4vh;
-    }
+  .ProfileMenu .profileDropdown {
+    top: 4vh;
+    width: 25vw;
+  }
 }
 
 @media only screen and (min-width: 2560px) {
-    .ProfileMenu .profileDropdown {
-        top: 3vh;
-    }
+  .ProfileMenu .profileDropdown {
+    top: 3vh;
+    width: 20vw;
+  }
 }

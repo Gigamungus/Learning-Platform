@@ -1,7 +1,7 @@
 import {} from "./../actionCreators";
 
 const initialState = {
-  userLoggedIn: true,
+  userLoggedIn: false,
   authJWT: undefined
 };
 

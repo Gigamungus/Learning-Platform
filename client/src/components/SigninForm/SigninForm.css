@@ -1,0 +1,8 @@
+.SigninForm {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.SigninForm .Input {
+    width: 100%;
+}
