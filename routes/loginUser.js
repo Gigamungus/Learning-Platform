@@ -40,7 +40,7 @@ const loginUser = (req, res) => {
                   error.error = err;
                   res.json(error);
                 } else {
-                  res.json(token);
+                  res.json({ jwt: token });
                 }
               }
             );

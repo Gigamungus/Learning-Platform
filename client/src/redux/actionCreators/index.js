@@ -3,4 +3,6 @@ export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 
 export const TOGGLE_PROFILE_OPTIONS = "TOGGLE_PROFILE_OPTIONS";
 
-export const SIGNIN_USER = "SIGNIN_USER";
+export const SIGNING_IN = "SIGNING_IN";
+
+export const USER_SIGNED_IN = "USER_SIGNED_IN";

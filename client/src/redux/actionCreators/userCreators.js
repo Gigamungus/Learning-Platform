@@ -1,16 +1,32 @@
-import { SIGNIN_USER } from "./index";
+import { SIGNING_IN, USER_SIGNED_IN } from "./index";
+import secret from "./../../config/secrets";
 
 export const signinUser = (username, password) => {
   return dispatch => {
-    fetch(`${window.location.origin}/api/loginuser`, {
+    dispatch(signingIn());
+    fetch(`${secret.apiLocation}/api/loginuser`, {
       method: "POST",
-      "content-type": "application/json",
-      body: {
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
         username,
         password
-      }
+      })
     })
       .then(data => data.json())
-      .then(data => console.log(data));
+      .then(data => {
+        if (data.error) {
+        } else {
+          dispatch(userSignedIn(data.jwt));
+        }
+      });
   };
 };
+
+export const signingIn = () => ({
+  type: SIGNING_IN
+});
+
+export const userSignedIn = JWT => ({
+  type: USER_SIGNED_IN,
+  JWT
+});

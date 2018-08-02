@@ -1,3 +1,4 @@
+//imports
 const express = require("express");
 const app = express();
 let port = process.env.PORT || 5000;
@@ -5,6 +6,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const authStrat = require("./auth-strategy/jwtStrategy");
 const passport = require("passport");
+const cors = require("cors");
+
+//secrets
 const secrets = {
   secret: process.env.secret || require("./config/secrets").secret,
   DBURL: process.env.DBURL || require("./config/secrets").DBURL
@@ -29,6 +33,9 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(authStrat);
+
+//enable cors
+app.use(cors());
 
 mongoose.connect(
   DBURL,
