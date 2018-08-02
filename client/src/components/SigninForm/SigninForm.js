@@ -12,7 +12,7 @@ class SigninForm extends Component {
     return (
       <form className="SigninForm" onSubmit={this.signinHelper.bind(this)}>
         <Input placeholder="username" />
-        <Input placeholder="password" />
+        <Input placeholder="password" type="password" />
         <button type="submit" style={{ display: "none" }} />
       </form>
     );

@@ -1,4 +1,9 @@
-import { SIGNING_IN, USER_SIGNED_IN } from "./../actionCreators";
+import {
+  SIGNING_IN,
+  USER_SIGNED_IN,
+  LOGOUT_USER,
+  CREATE_USER_ERRORS
+} from "./../actionCreators";
 import cookieParser from "./../../functions/cookie-parser";
 
 const jwt = cookieParser(document.cookie).user;
@@ -6,7 +11,9 @@ const jwt = cookieParser(document.cookie).user;
 const initialState = {
   userLoggedIn: Boolean(jwt),
   userLoggingIn: false,
-  authJWT: jwt
+  authJWT: jwt,
+  loginError: "",
+  signupError: ""
 };
 
 const user = (state = initialState, action) => {
@@ -19,6 +26,17 @@ const user = (state = initialState, action) => {
         userLoggingIn: false,
         userLoggedIn: true,
         authJWT: action.JWT
+      });
+    case LOGOUT_USER:
+      document.cookie = `user=`;
+      return Object.assign({}, state, { userLoggedIn: false, authJWT: "" });
+    case CREATE_USER_ERRORS.PASSWORD_MISMATCH:
+      return Object.assign({}, state, { signupError: "password missmatch" });
+    case CREATE_USER_ERRORS.INVALID_USERNAME:
+      return Object.assign({}, state, { signupError: "invalid username" });
+    case CREATE_USER_ERRORS.USERNAME_TAKEN:
+      return Object.assign({}, state, {
+        signupError: "username taken"
       });
     default:
       return state;

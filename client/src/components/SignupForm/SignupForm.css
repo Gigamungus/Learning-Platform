@@ -1,0 +1,9 @@
+.SignupForm {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.SignupForm .Input {
+    width: 100%;
+}
