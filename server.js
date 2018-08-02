@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const authStrat = require("./auth-strategy/jwtStrategy");
 const passport = require("passport");
 const secrets = {
-  secret: process.env.secret || require("./config/passwords").secret,
+  secret: process.env.secret || require("./config/secrets").secret,
   DBURL: process.env.DBURL || require("./config/secrets").DBURL
 };
 const DBURL = secrets.DBURL;

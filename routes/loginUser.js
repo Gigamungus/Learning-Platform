@@ -1,7 +1,7 @@
 const User = require("./../schemas/UserSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const secretOrKey = process.env.secret || require("./config/passwords").secret;
+const secretOrKey = process.env.secret || require("./../config/secrets").secret;
 
 const loginUser = (req, res) => {
   let error = { error: undefined };
