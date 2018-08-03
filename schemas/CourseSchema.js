@@ -3,7 +3,15 @@ const Schema = mongoose.Schema;
 
 const courseSchema = Schema({
   title: String,
-  author: String,
+  author: [
+    {
+      name: String,
+      authorRef: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+      }
+    }
+  ],
   views: Number,
   viewers: [
     {
