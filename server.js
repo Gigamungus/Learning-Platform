@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 //routes
 const createUser = require("./routes/createUser");
 const loginUser = require("./routes/loginUser");
+const createCourse = require("./routes/createCourse");
 
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,6 +53,10 @@ app.post("/api/createuser", (req, res) => {
 
 app.post("/api/loginuser", (req, res) => {
   loginUser(req, res);
+});
+
+app.post("/api/createCourse", (req, res) => {
+  createCourse(req, res);
 });
 
 app.get("*", (req, res) => {
