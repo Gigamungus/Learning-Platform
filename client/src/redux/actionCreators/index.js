@@ -20,3 +20,7 @@ export const CREATE_USER_ERRORS = {
 export const LOADING_COURSES = "LOADING_COURSES";
 
 export const LOADED_COURSES = "LOADED_COURSES";
+
+export const RESET_PAGE = {
+    HOMESCREEN: "RESET_HOMESCREEN"
+}

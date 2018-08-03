@@ -3,8 +3,8 @@ import {
   USER_SIGNED_IN,
   LOGOUT_USER,
   CREATE_USER_ERRORS
-} from "./../actionCreators";
-import cookieParser from "./../../functions/cookie-parser";
+} from "../actionCreators";
+import cookieParser from "../../functions/cookie-parser";
 
 const jwt = cookieParser(document.cookie).user;
 

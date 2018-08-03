@@ -1,4 +1,4 @@
-import { LOADED_COURSES, LOADING_COURSES } from "./../actionCreators/index";
+import { LOADED_COURSES, LOADING_COURSES } from "../actionCreators";
 
 const initialState = {
   loadingCourses: false,

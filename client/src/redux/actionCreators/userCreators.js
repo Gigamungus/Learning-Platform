@@ -4,8 +4,8 @@ import {
   LOGOUT_USER,
   CREATE_USER_ERRORS,
   TOGGLE_CREATING_ACCOUNT
-} from "./index";
-import secret from "./../../config/secrets";
+} from ".";
+import secret from "../../config/secrets";
 
 export const signupUser = (username, password, password2) => {
   if (password !== password2) {

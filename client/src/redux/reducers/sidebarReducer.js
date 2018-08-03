@@ -1,4 +1,4 @@
-import { TOGGLE_SIDEBAR } from "./../actionCreators";
+import { TOGGLE_SIDEBAR } from "../actionCreators";
 
 let initialScreenWidth = window.innerWidth;
 const initialState = { sidebarVisible: initialScreenWidth >= 768 };

@@ -1,7 +1,7 @@
 import {
   TOGGLE_PROFILE_OPTIONS,
   TOGGLE_CREATING_ACCOUNT
-} from "./../actionCreators/index";
+} from "../actionCreators";
 const initialState = { displayProfileMenu: false, creatingAccount: false };
 
 const profile = (state = initialState, action) => {

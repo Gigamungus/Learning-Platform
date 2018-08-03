@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import HomeScreen from "./HomeScreen";
-import { fetchRelevantCourses } from "./../../redux/actionCreators/courseCreators";
+import { fetchRelevantCourses } from "../../redux/actionCreators/courseCreators";
+import { resetHomeScreen } from "../../redux/actionCreators/sidebarCreators";
 
 const mapStateToProps = state => ({
   loadedCourses: state.course.loadedCourses,
@@ -9,9 +10,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchRelevantCourses: (numberOfCourses = 10) => {
-    dispatch(fetchRelevantCourses(numberOfCourses));
-  }
+  fetchRelevantCourses: (numberOfCourses = 10) =>
+    dispatch(fetchRelevantCourses(numberOfCourses)),
+  resetSelf: () => dispatch(resetHomeScreen())
 });
 
 export default connect(

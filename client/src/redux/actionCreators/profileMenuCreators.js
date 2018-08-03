@@ -1,4 +1,4 @@
-import { TOGGLE_PROFILE_OPTIONS, TOGGLE_CREATING_ACCOUNT } from "./index";
+import { TOGGLE_PROFILE_OPTIONS, TOGGLE_CREATING_ACCOUNT } from ".";
 
 export const toggleProfileOptions = () => ({
   type: TOGGLE_PROFILE_OPTIONS

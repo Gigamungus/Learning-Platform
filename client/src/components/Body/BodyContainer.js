@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Body from "./Body";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = state => ({
   sidebarVisible: state.sidebar.sidebarVisible
@@ -7,7 +8,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Body);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Body)
+);

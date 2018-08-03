@@ -1,5 +1,5 @@
-import secret from "./../../config/secrets";
-import { LOADING_COURSES, LOADED_COURSES } from "./index";
+import secret from "../../config/secrets";
+import { LOADING_COURSES, LOADED_COURSES } from ".";
 
 const apiLocation = secret.apiLocation;
 

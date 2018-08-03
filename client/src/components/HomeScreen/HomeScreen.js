@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 import "./HomeScreen.css";
 
 class HomeScreen extends Component {
+  componentWillUnmount() {
+    this.props.resetSelf;
+  }
   render() {
     if (this.props.loadedCourses) {
       clearInterval(this.fetchingCoursesTimer);
