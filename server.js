@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 const createUser = require("./routes/createUser");
 const loginUser = require("./routes/loginUser");
 const createCourse = require("./routes/createCourse");
+const getRelevantCourses = require("./routes/getRelevantCourses");
 
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -57,6 +58,10 @@ app.post("/api/loginuser", (req, res) => {
 
 app.post("/api/createCourse", (req, res) => {
   createCourse(req, res);
+});
+
+app.get("/api/getrelevantcourses/:howMany", (req, res) => {
+  getRelevantCourses(req, res);
 });
 
 app.get("*", (req, res) => {

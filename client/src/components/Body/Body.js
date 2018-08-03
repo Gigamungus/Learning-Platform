@@ -3,6 +3,7 @@ import "./Body.css";
 import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
 import HomeScreenContainer from "./../HomeScreen/HomeScreenContainer";
+import CreateCourseContainer from "./../CreateCourse/CreateCourseContainer";
 
 class Body extends Component {
   render() {
@@ -11,6 +12,11 @@ class Body extends Component {
     return (
       <div className={classes.join(" ")}>
         <Route exact path="/" component={HomeScreenContainer} />
+        <Route
+          exact
+          path="/createnewcourse"
+          component={CreateCourseContainer}
+        />
       </div>
     );
   }
