@@ -1,4 +1,4 @@
-const Course = require("./../schemas/CourseSchema");
+const Course = require("../schemas/CourseSchema");
 
 const createCourse = (req, res) => {
   let error = { error: undefined };

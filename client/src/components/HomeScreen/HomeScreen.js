@@ -6,7 +6,7 @@ import "./HomeScreen.css";
 
 class HomeScreen extends Component {
   componentWillUnmount() {
-    this.props.resetSelf;
+    this.props.resetSelf();
   }
   render() {
     if (this.props.loadedCourses) {

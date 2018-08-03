@@ -1,5 +1,5 @@
 import secret from "../../config/secrets";
-import { LOADING_COURSES, LOADED_COURSES } from ".";
+import { loadingCourses, loadedCourses } from "./homeScreenCreators";
 
 const apiLocation = secret.apiLocation;
 
@@ -19,12 +19,3 @@ export const fetchRelevantCourses = numberOfCourses => {
       });
   };
 };
-
-export const loadingCourses = () => ({
-  type: LOADING_COURSES
-});
-
-export const loadedCourses = courses => ({
-  type: LOADED_COURSES,
-  courses
-});

@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import HomeScreen from "./HomeScreen";
 import { fetchRelevantCourses } from "../../redux/actionCreators/courseCreators";
-import { resetHomeScreen } from "../../redux/actionCreators/sidebarCreators";
+import { resetHomeScreen } from "../../redux/actionCreators/homeScreenCreators";
 
 const mapStateToProps = state => ({
-  loadedCourses: state.course.loadedCourses,
-  loadingCourses: state.course.loadingCourses,
-  courses: state.course.courses
+  loadedCourses: state.homeScreen.loadedCourses,
+  loadingCourses: state.homeScreen.loadingCourses,
+  courses: state.homeScreen.courses
 });
 
 const mapDispatchToProps = dispatch => ({
