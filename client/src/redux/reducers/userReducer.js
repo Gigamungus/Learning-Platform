@@ -28,7 +28,6 @@ const user = (state = initialState, action) => {
         authJWT: action.JWT
       });
     case LOGOUT_USER:
-      console.log("logout pl0x");
       document.cookie = `user=`;
       return Object.assign({}, state, { userLoggedIn: false, authJWT: "" });
     case CREATE_USER_ERRORS.PASSWORD_MISMATCH:

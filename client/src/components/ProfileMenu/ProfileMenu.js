@@ -25,12 +25,15 @@ class ProfileMenu extends Component {
           />
           <div className={profileMenuClass}>
             <Option text="view profile" />
-            <Option text="logout" onClick={this.props.logoutUser.bind(this)} />
+            <Option
+              text="logout"
+              link="/"
+              onClick={this.props.logoutUser.bind(this)}
+            />
           </div>
         </div>
       );
     } else if (this.props.creatingAccount) {
-      //rewrite this
       profileMenuDropdown = (
         <div className="ProfileMenu">
           <Button text="sign in" onClick={this.props.toggleProfileOptions} />
