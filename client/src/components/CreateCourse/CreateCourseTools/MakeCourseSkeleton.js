@@ -5,12 +5,17 @@ import { Redirect } from "react-router-dom";
 class MakeCourseSkeleton extends Component {
   componentDidMount() {
     this.props.createCourseSkeleton(this.props.JWT);
+    this.persistentCreateCourseSkeleton = setInterval(() => {
+      this.props.createCourseSkeleton(this.props.JWT);
+    }, 6000);
   }
-  componentWillDismount() {
+  componentWillUnmount() {  
+    clearInterval(this.persistentCreateCourseSkeleton);
     this.props.resetSelf();
   }
   render() {
     if (this.props.createdCourseSkeleton) {
+      clearInterval(this.persistentCreateCourseSkeleton);
       return (
         <Redirect to={`/createnewcourse/${this.props.courseId}/dashboard`} />
       );

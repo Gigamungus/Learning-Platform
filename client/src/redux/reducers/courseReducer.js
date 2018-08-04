@@ -55,6 +55,8 @@ const course = (state = initialState, action) => {
           userMayNotViewCourse: true
         }
       );
+    case RESET_PAGE.COURSE_CREATOR_DASHBOARD:
+      return initialState;
     default:
       return state;
   }

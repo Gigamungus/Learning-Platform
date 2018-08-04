@@ -37,6 +37,7 @@ class CreateCourse extends Component {
               course={this.props.courseToEditTopLevel}
               JWT={this.props.JWT || undefined}
               userMayNotViewCourse={this.props.userMayNotViewCourse}
+              resetSelf={this.props.resetDashboard}
             />
           )}
         />

@@ -3,7 +3,8 @@ import CreateCourse from "./CreateCourse";
 import {
   createCourseSkeleton,
   resetCourseSkeletonCreator,
-  loadCourseToEdit
+  loadCourseToEdit,
+  resetCourseCreatorDashboard
 } from "./../../redux/actionCreators/courseCreators";
 
 const mapStateToProps = state => ({
@@ -21,7 +22,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   createCourseSkeleton: jwt => dispatch(createCourseSkeleton(jwt)),
   resetCourseSkeletonCreator: () => dispatch(resetCourseSkeletonCreator()),
-  loadCourseToEdit: (courseId, JWT) => dispatch(loadCourseToEdit(courseId, JWT))
+  loadCourseToEdit: (courseId, JWT) =>
+    dispatch(loadCourseToEdit(courseId, JWT)),
+  resetDashboard: () => dispatch(resetCourseCreatorDashboard())
 });
 
 export default connect(

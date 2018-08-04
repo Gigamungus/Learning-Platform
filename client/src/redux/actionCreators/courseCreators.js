@@ -84,3 +84,7 @@ export const loadingCourseError = error => ({
   type: LOAD_COURSE_TO_EDIT.BAD_CREDENTIALS,
   error
 });
+
+export const resetCourseCreatorDashboard = () => ({
+  type: RESET_PAGE.COURSE_CREATOR_DASHBOARD
+});
