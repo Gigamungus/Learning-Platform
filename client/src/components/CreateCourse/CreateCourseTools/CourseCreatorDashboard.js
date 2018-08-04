@@ -20,6 +20,7 @@ class CourseCreatorDashboard extends Component {
       clearInterval(this.persistentLoadCourse);
       return <div>this course has been made private.</div>;
     } else if (this.props.loadedCourse) {
+      console.log(this.props);
       clearInterval(this.persistentLoadCourse);
       return <div>loaded</div>;
     } else {

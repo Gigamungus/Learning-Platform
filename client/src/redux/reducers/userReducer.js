@@ -21,14 +21,14 @@ const user = (state = initialState, action) => {
     case SIGNING_IN:
       return Object.assign({}, state, { userLoggingIn: true });
     case USER_SIGNED_IN:
-      document.cookie = `user=${action.JWT}`;
+      document.cookie = `user=${action.JWT}; path=/`;
       return Object.assign({}, state, {
         userLoggingIn: false,
         userLoggedIn: true,
         authJWT: action.JWT
       });
     case LOGOUT_USER:
-      document.cookie = `user=`;
+      document.cookie = `user=; path=/`;
       return Object.assign({}, state, { userLoggedIn: false, authJWT: "" });
     case CREATE_USER_ERRORS.PASSWORD_MISMATCH:
       return Object.assign({}, state, { signupError: "password missmatch" });
