@@ -61,7 +61,13 @@ export const loadCourseToEdit = (courseId, JWT) => {
       }
     })
       .then(data => data.json())
-      .then(data => console.log(data));
+      .then(data => {
+        if (data.error) {
+          dispatch(loadingCourseError());
+        } else {
+          dispatch(loadedCourseToEdit(data));
+        }
+      });
   };
 };
 
@@ -72,4 +78,9 @@ export const loadingCourseToEdit = () => ({
 export const loadedCourseToEdit = course => ({
   type: LOAD_COURSE_TO_EDIT.LOADED,
   course
+});
+
+export const loadingCourseError = error => ({
+  type: LOAD_COURSE_TO_EDIT.BAD_CREDENTIALS,
+  error
 });

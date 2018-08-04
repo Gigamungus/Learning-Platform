@@ -14,7 +14,8 @@ const mapStateToProps = state => ({
   JWT: state.user.authJWT,
   loadedCourseToEdit: state.course.loadedCourseToEdit,
   loadingCourseToEdit: state.course.loadingCourseToEdit,
-  courseToEditTopLevel: state.course.courseToEditTopLevel
+  courseToEditTopLevel: state.course.courseToEditTopLevel,
+  userMayNotViewCourse: state.course.userMayNotViewCourse
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -10,7 +10,8 @@ const initialState = {
   editingCourseId: undefined,
   loadingCourseToEdit: false,
   loadedCourseToEdit: false,
-  courseToEdit: undefined
+  courseToEditTopLevel: undefined,
+  userMayNotViewCourse: false
 };
 
 const course = (state = initialState, action) => {
@@ -42,8 +43,18 @@ const course = (state = initialState, action) => {
       return Object.assign({}, state, {
         loadingCourseToEdit: false,
         loadedCourseToEdit: true,
-        courseToEdit: action.course
+        courseToEditTopLevel: action.course
       });
+    case LOAD_COURSE_TO_EDIT.BAD_CREDENTIALS:
+      return Object.assign(
+        state,
+        {},
+        {
+          loadingCourseToEdit: false,
+          loadedCourseToEdit: false,
+          userMayNotViewCourse: true
+        }
+      );
     default:
       return state;
   }
