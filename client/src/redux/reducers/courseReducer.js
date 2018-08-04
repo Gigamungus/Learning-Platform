@@ -1,7 +1,8 @@
 import {
   CREATE_COURSE_SKELETON,
   RESET_PAGE,
-  LOAD_COURSE_TO_EDIT
+  LOAD_COURSE_TO_EDIT,
+  EDIT_COURSE
 } from "../actionCreators/index";
 
 const initialState = {
@@ -57,6 +58,26 @@ const course = (state = initialState, action) => {
       );
     case RESET_PAGE.COURSE_CREATOR_DASHBOARD:
       return initialState;
+
+    case EDIT_COURSE.TITLE:
+      return Object.assign({}, state, {
+        courseToEditTopLevel: Object.assign({}, state.courseToEditTopLevel, {
+          title: action.newTitle
+        })
+      });
+    case EDIT_COURSE.DESCRIPTION:
+      return Object.assign({}, state, {
+        courseToEditTopLevel: Object.assign({}, state.courseToEditTopLevel, {
+          description: action.newDescription
+        })
+      });
+    case EDIT_COURSE.PRIVACY:
+      return Object.assign({}, state, {
+        courseToEditTopLevel: Object.assign({}, state.courseToEditTopLevel, {
+          public: !state.courseToEditTopLevel.public
+        })
+      });
+
     default:
       return state;
   }

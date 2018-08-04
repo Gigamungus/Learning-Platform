@@ -38,6 +38,9 @@ class CreateCourse extends Component {
               JWT={this.props.JWT || undefined}
               userMayNotViewCourse={this.props.userMayNotViewCourse}
               resetSelf={this.props.resetDashboard}
+              editCourseTitle={this.props.editCourseTitle}
+              editCourseDescription={this.props.editCourseDescription}
+              toggleCoursePrivacy={this.props.toggleCoursePrivacy}
             />
           )}
         />

@@ -4,7 +4,10 @@ import {
   createCourseSkeleton,
   resetCourseSkeletonCreator,
   loadCourseToEdit,
-  resetCourseCreatorDashboard
+  resetCourseCreatorDashboard,
+  editCourseTitle,
+  editCourseDescription,
+  toggleCoursePrivacy
 } from "./../../redux/actionCreators/courseCreators";
 
 const mapStateToProps = state => ({
@@ -24,7 +27,11 @@ const mapDispatchToProps = dispatch => ({
   resetCourseSkeletonCreator: () => dispatch(resetCourseSkeletonCreator()),
   loadCourseToEdit: (courseId, JWT) =>
     dispatch(loadCourseToEdit(courseId, JWT)),
-  resetDashboard: () => dispatch(resetCourseCreatorDashboard())
+  resetDashboard: () => dispatch(resetCourseCreatorDashboard()),
+  editCourseTitle: newTitle => dispatch(editCourseTitle(newTitle)),
+  editCourseDescription: newDescription =>
+    dispatch(editCourseDescription(newDescription)),
+  toggleCoursePrivacy: () => dispatch(toggleCoursePrivacy())
 });
 
 export default connect(

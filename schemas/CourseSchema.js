@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const courseSchema = Schema({
   title: {
     type: String,
-    default: "new course in development"
+    default: ""
   },
   author: {
     name: {
@@ -15,6 +15,10 @@ const courseSchema = Schema({
       type: Schema.Types.ObjectId,
       ref: "User"
     }
+  },
+  description: {
+    type: String,
+    default: ""
   },
   views: {
     type: Number,

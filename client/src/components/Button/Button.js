@@ -2,11 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Button.css";
 
-const Button = ({ type, text, onClick }) => {
+const Button = ({ type, text, onClick, color = "#777777" }) => {
   // console.log(text);
   return (
     <div className="full-width Button-container">
-      <button className="Button" onClick={onClick} type={type} value>
+      <button
+        className="Button"
+        style={{ backgroundColor: color }}
+        onClick={onClick}
+        type={type}
+        value
+      >
         {text}
       </button>
     </div>

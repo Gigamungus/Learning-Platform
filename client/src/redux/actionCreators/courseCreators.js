@@ -3,7 +3,8 @@ import { loadingCourses, loadedCourses } from "./homeScreenCreators";
 import {
   CREATE_COURSE_SKELETON,
   RESET_PAGE,
-  LOAD_COURSE_TO_EDIT
+  LOAD_COURSE_TO_EDIT,
+  EDIT_COURSE
 } from "./index";
 
 const apiLocation = secret.apiLocation;
@@ -87,4 +88,18 @@ export const loadingCourseError = error => ({
 
 export const resetCourseCreatorDashboard = () => ({
   type: RESET_PAGE.COURSE_CREATOR_DASHBOARD
+});
+
+export const editCourseTitle = newTitle => ({
+  type: EDIT_COURSE.TITLE,
+  newTitle
+});
+
+export const editCourseDescription = newDescription => ({
+  type: EDIT_COURSE.DESCRIPTION,
+  newDescription
+});
+
+export const toggleCoursePrivacy = () => ({
+  type: EDIT_COURSE.PRIVACY
 });
