@@ -1,6 +1,10 @@
 import secret from "../../config/secrets";
 import { loadingCourses, loadedCourses } from "./homeScreenCreators";
-import { CREATE_COURSE_SKELETON, RESET_PAGE } from "./index";
+import {
+  CREATE_COURSE_SKELETON,
+  RESET_PAGE,
+  LOAD_COURSE_TO_EDIT
+} from "./index";
 
 const apiLocation = secret.apiLocation;
 
@@ -46,4 +50,26 @@ export const createdCourseSkeleton = courseId => ({
 
 export const resetCourseSkeletonCreator = () => ({
   type: RESET_PAGE.COURSE_SKELETON_CREATOR
+});
+
+export const loadCourseToEdit = (courseId, JWT) => {
+  return dispatch => {
+    dispatch(loadingCourseToEdit());
+    fetch(`${apiLocation}/api/getcourse/${courseId}`, {
+      headers: {
+        Authorization: JWT
+      }
+    })
+      .then(data => data.json())
+      .then(data => console.log(data));
+  };
+};
+
+export const loadingCourseToEdit = () => ({
+  type: LOAD_COURSE_TO_EDIT.LOADING
+});
+
+export const loadedCourseToEdit = course => ({
+  type: LOAD_COURSE_TO_EDIT.LOADED,
+  course
 });

@@ -1,9 +1,16 @@
-import { CREATE_COURSE_SKELETON, RESET_PAGE } from "../actionCreators";
+import {
+  CREATE_COURSE_SKELETON,
+  RESET_PAGE,
+  LOAD_COURSE_TO_EDIT
+} from "../actionCreators/index";
 
 const initialState = {
   creatingCourseSkeleton: false,
   createdCourseSkeleton: false,
-  editingCourseId: undefined
+  editingCourseId: undefined,
+  loadingCourseToEdit: false,
+  loadedCourseToEdit: false,
+  courseToEdit: undefined
 };
 
 const course = (state = initialState, action) => {
@@ -24,6 +31,18 @@ const course = (state = initialState, action) => {
       return Object.assign({}, state, {
         createdCourseSkeleton: false,
         creatingCourseSkeleton: false
+      });
+
+    case LOAD_COURSE_TO_EDIT.LOADING:
+      return Object.assign({}, state, {
+        loadingCourseToEdit: true,
+        loadedCourseToEdit: false
+      });
+    case LOAD_COURSE_TO_EDIT.LOADED:
+      return Object.assign({}, state, {
+        loadingCourseToEdit: false,
+        loadedCourseToEdit: true,
+        courseToEdit: action.course
       });
     default:
       return state;

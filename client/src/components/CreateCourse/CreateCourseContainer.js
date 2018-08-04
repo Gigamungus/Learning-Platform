@@ -2,7 +2,8 @@ import { connect } from "react-redux";
 import CreateCourse from "./CreateCourse";
 import {
   createCourseSkeleton,
-  resetCourseSkeletonCreator
+  resetCourseSkeletonCreator,
+  loadCourseToEdit
 } from "./../../redux/actionCreators/courseCreators";
 
 const mapStateToProps = state => ({
@@ -10,12 +11,16 @@ const mapStateToProps = state => ({
   createdCourseSkeleton: state.course.createdCourseSkeleton,
   courseId: state.course.editingCourseId,
   userLoggedIn: state.user.userLoggedIn,
-  JWT: state.user.authJWT
+  JWT: state.user.authJWT,
+  loadedCourseToEdit: state.course.loadedCourseToEdit,
+  loadingCourseToEdit: state.course.loadingCourseToEdit,
+  courseToEditTopLevel: state.course.courseToEditTopLevel
 });
 
 const mapDispatchToProps = dispatch => ({
   createCourseSkeleton: jwt => dispatch(createCourseSkeleton(jwt)),
-  resetCourseSkeletonCreator: () => dispatch(resetCourseSkeletonCreator())
+  resetCourseSkeletonCreator: () => dispatch(resetCourseSkeletonCreator()),
+  loadCourseToEdit: (courseId, JWT) => dispatch(loadCourseToEdit(courseId, JWT))
 });
 
 export default connect(

@@ -24,10 +24,20 @@ class CreateCourse extends Component {
             />
           )}
         />
+
         <Route
           exact
           path="/createnewcourse/:courseId/dashboard"
-          render={props => <CourseCreatorDashboard {...props} />}
+          render={props => (
+            <CourseCreatorDashboard
+              {...props}
+              loadingCourse={this.props.loadingCourseToEdit}
+              loadedCourse={this.props.loadedCourseToEdit}
+              loadCourse={this.props.loadCourseToEdit}
+              course={this.props.courseToEditTopLevel}
+              JWT={this.props.JWT || undefined}
+            />
+          )}
         />
       </div>
     );

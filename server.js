@@ -24,6 +24,7 @@ const createUser = require("./routes/createUser");
 const loginUser = require("./routes/loginUser");
 const createCourse = require("./routes/createCourse");
 const getRelevantCourses = require("./routes/getRelevantCourses");
+const getCourse = require("./routes/getCourse");
 
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -66,6 +67,10 @@ app.post(
 
 app.get("/api/getrelevantcourses/:howMany", (req, res) => {
   getRelevantCourses(req, res);
+});
+
+app.get("/api/getcourse/:courseId", (req, res) => {
+  getCourse(req, res);
 });
 
 app.get("*", (req, res) => {
