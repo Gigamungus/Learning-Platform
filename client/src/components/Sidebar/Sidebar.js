@@ -11,7 +11,7 @@ class Sidebar extends Component {
         options = (
           <div>
             <Option text="home" link="/" />
-            <Option text="create new course" key={1} link="/createnewcourse" />
+            <Option text="create new course" link="/createnewcourse" />
           </div>
         );
       } else {

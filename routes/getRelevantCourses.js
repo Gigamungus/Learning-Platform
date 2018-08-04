@@ -13,7 +13,7 @@ const getRelevantCourses = (req, res) => {
   let error = {
     error: undefined
   };
-  Courses.find().then((courses, err) => {
+  Courses.find({ public: true }).then((courses, err) => {
     if (err) {
       error.error = err;
       res.json(error);

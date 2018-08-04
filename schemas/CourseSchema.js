@@ -2,17 +2,24 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const courseSchema = Schema({
-  title: String,
-  author: [
-    {
-      name: String,
-      authorRef: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-      }
+  title: {
+    type: String,
+    default: "new course in development"
+  },
+  author: {
+    name: {
+      type: String,
+      required: true
+    },
+    authorRef: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
     }
-  ],
-  views: Number,
+  },
+  views: {
+    type: Number,
+    default: 0
+  },
   viewers: [
     {
       viewerRef: {
@@ -21,7 +28,10 @@ const courseSchema = Schema({
       }
     }
   ],
-  thumbnailImg: String,
+  thumbnailImg: {
+    type: String,
+    default: "https://i.ytimg.com/vi/GD6qtc2_AQA/maxresdefault.jpg"
+  },
   created: {
     type: Date,
     default: Date.now
@@ -47,8 +57,14 @@ const courseSchema = Schema({
     ]
   },
   tags: [String],
-  public: Boolean,
-  inDevelopment: Boolean
+  public: {
+    type: Boolean,
+    default: false
+  },
+  inDevelopment: {
+    type: Boolean,
+    default: true
+  }
 });
 
 module.exports = Course = mongoose.model("Course", courseSchema);

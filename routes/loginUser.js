@@ -32,6 +32,7 @@ const loginUser = (req, res) => {
               {
                 username: user.username,
                 password: user.password,
+                id: user._id,
                 exp: Math.floor(Date.now() / 1000) + 31557600
               },
               secretOrKey,

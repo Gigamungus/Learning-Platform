@@ -56,9 +56,13 @@ app.post("/api/loginuser", (req, res) => {
   loginUser(req, res);
 });
 
-app.post("/api/createCourse", (req, res) => {
-  createCourse(req, res);
-});
+app.post(
+  "/api/createCourse",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    createCourse(req, res);
+  }
+);
 
 app.get("/api/getrelevantcourses/:howMany", (req, res) => {
   getRelevantCourses(req, res);

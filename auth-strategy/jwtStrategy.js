@@ -13,7 +13,7 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = secret;
 
 module.exports = strat = new JwtStrategy(opts, (jwt_payload, done) => {
-  User.findById(jwt_payload._id, (err, user) => {
+  User.findById(jwt_payload.id, (err, user) => {
     if (err) {
       return done(err, false);
     }

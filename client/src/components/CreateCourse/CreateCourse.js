@@ -1,16 +1,43 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./CreateCourse.css";
 import { Route } from "react-router-dom";
 import CourseCreatorDashboard from "./CreateCourseTools/CourseCreatorDashboard";
+import MakeCourseSkeleton from "./CreateCourseTools/MakeCourseSkeleton";
 
 class CreateCourse extends Component {
   render() {
     return (
-      <div>
-        <Route path="/createnewcourse" component={CourseCreatorDashboard} />
+      <div className="CreateCourse">
+        <Route
+          exact
+          path="/createnewcourse"
+          render={props => (
+            <MakeCourseSkeleton
+              {...props}
+              creatingCourseSkeleton={this.props.creatingCourseSkeleton}
+              createdCourseSkeleton={this.props.createdCourseSkeleton}
+              createCourseSkeleton={this.props.createCourseSkeleton}
+              courseId={this.props.courseId}
+              JWT={this.props.JWT}
+              resetSelf={this.props.resetCourseSkeletonCreator}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/createnewcourse/:courseId/dashboard"
+          render={props => <CourseCreatorDashboard {...props} />}
+        />
       </div>
     );
   }
 }
+
+CreateCourse.propTypes = {
+  creatingCourseSkeleton: PropTypes.bool.isRequired,
+  createdCourseSkeleton: PropTypes.bool.isRequired,
+  createCourseSkeleton: PropTypes.func.isRequired
+};
 
 export default CreateCourse;
