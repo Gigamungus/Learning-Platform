@@ -25,6 +25,7 @@ const loginUser = require("./routes/loginUser");
 const createCourse = require("./routes/createCourse");
 const getRelevantCourses = require("./routes/getRelevantCourses");
 const getCourse = require("./routes/getCourse");
+const editCourse = require("./routes/editCourse");
 
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -62,6 +63,14 @@ app.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     createCourse(req, res);
+  }
+);
+
+app.post(
+  "/api/editcourse/:courseId",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    editCourse(req, res);
   }
 );
 

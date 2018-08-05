@@ -7,7 +7,9 @@ import {
   resetCourseCreatorDashboard,
   editCourseTitle,
   editCourseDescription,
-  toggleCoursePrivacy
+  toggleCoursePrivacy,
+  editCourseImage,
+  saveCourseChanges
 } from "./../../redux/actionCreators/courseCreators";
 
 const mapStateToProps = state => ({
@@ -31,7 +33,10 @@ const mapDispatchToProps = dispatch => ({
   editCourseTitle: newTitle => dispatch(editCourseTitle(newTitle)),
   editCourseDescription: newDescription =>
     dispatch(editCourseDescription(newDescription)),
-  toggleCoursePrivacy: () => dispatch(toggleCoursePrivacy())
+  toggleCoursePrivacy: () => dispatch(toggleCoursePrivacy()),
+  editCourseImage: newImage => dispatch(editCourseImage(newImage)),
+  saveCourseChanges: (courseId, JWT, courseEdit) =>
+    dispatch(saveCourseChanges(courseId, JWT, courseEdit))
 });
 
 export default connect(

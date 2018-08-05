@@ -13,7 +13,7 @@ class HomeScreen extends Component {
       clearInterval(this.fetchingCoursesTimer);
       let courseThumbnails = this.props.courses.map((course, index) => (
         <CourseThumbNail
-          uploader={course.author}
+          uploader={course.author.name}
           title={course.title}
           pageSrc={course._id}
           views={course.views}

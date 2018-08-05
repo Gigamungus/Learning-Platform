@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     justify-content: center;
 }
 
@@ -12,6 +13,30 @@
     margin: auto;
 }
 
-.CreateCourse .CourseCreatorDashboard .Input {
+.CreateCourse .CourseCreatorDashboard>* {
     padding: 10px;
+    width: 90%;
 }
+
+@media only screen and (min-width: 768px) {
+    .CreateCourse .CourseCreatorDashboard {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .CreateCourse .CourseCreatorDashboard {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    .CreateCourse .CourseCreatorDashboard {
+        width: 40%;
+    }
+}
+
+/* .CreateCourse .CourseCreatorDashboard .privacyToggle {
+    width: 80%;
+    margin: auto;
+} */

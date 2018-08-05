@@ -1,18 +1,31 @@
 import React, { Component } from "react";
 import Input from "./../../Input/Input";
 import Button from "./../../Button/Button";
+import LoadSpinner from "./../../LoadSpinner/LoadSpinner";
 
 class CourseCreatorDashboard extends Component {
   constructor(props) {
     super(props);
     this.courseId = this.props.match.params.courseId;
   }
+
   titleChangeHelper(e) {
     this.props.editCourseTitle(e.target.value);
   }
   descriptionChangeHelper(e) {
     this.props.editCourseDescription(e.target.value);
   }
+  imageChangeHelper(e) {
+    this.props.editCourseImage(e.target.value);
+  }
+  saveCourseChangesHelper() {
+    this.props.saveCourseChanges(
+      this.courseId,
+      this.props.JWT,
+      this.props.course
+    );
+  }
+
   componentDidMount() {
     this.props.loadCourse(this.courseId, this.props.JWT);
     this.persistentLoadCourse = setInterval(() => {
@@ -29,7 +42,6 @@ class CourseCreatorDashboard extends Component {
       return <div>this course has been made private.</div>;
     } else if (this.props.loadedCourse) {
       clearInterval(this.persistentLoadCourse);
-      console.log(this.props.course);
       let course = this.props.course;
       //create the actual page here
 
@@ -49,6 +61,14 @@ class CourseCreatorDashboard extends Component {
 
       let page = (
         <div className="CourseCreatorDashboard">
+          <div>
+            <Button
+              text="save changes"
+              color="slateBlue"
+              onClick={this.saveCourseChangesHelper.bind(this)}
+            />
+          </div>{" "}
+          <div className="privacyToggle">{privacyToggle}</div>
           <Input
             placeholder="course title"
             value={course.title}
@@ -59,7 +79,12 @@ class CourseCreatorDashboard extends Component {
             value={course.description}
             onChange={this.descriptionChangeHelper.bind(this)}
           />
-          {privacyToggle}
+          <Input
+            placeholder="course image"
+            value={course.thumbnailImg}
+            onChange={this.imageChangeHelper.bind(this)}
+          />
+          <img src={course.thumbnailImg} alt="course thumbnail" />
         </div>
       );
 
@@ -67,7 +92,12 @@ class CourseCreatorDashboard extends Component {
 
       //write code above here
     } else {
-      return <div>loading</div>;
+      return (
+        <div className="CreatingCourseSkeleton">
+          <p>loading course</p>
+          <LoadSpinner />
+        </div>
+      );
     }
   }
 }

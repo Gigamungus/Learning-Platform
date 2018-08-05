@@ -41,6 +41,8 @@ class CreateCourse extends Component {
               editCourseTitle={this.props.editCourseTitle}
               editCourseDescription={this.props.editCourseDescription}
               toggleCoursePrivacy={this.props.toggleCoursePrivacy}
+              editCourseImage={this.props.editCourseImage}
+              saveCourseChanges={this.props.saveCourseChanges}
             />
           )}
         />

@@ -77,6 +77,12 @@ const course = (state = initialState, action) => {
           public: !state.courseToEditTopLevel.public
         })
       });
+    case EDIT_COURSE.IMAGE:
+      return Object.assign({}, state, {
+        courseToEditTopLevel: Object.assign({}, state.courseToEditTopLevel, {
+          thumbnailImg: action.newImage
+        })
+      });
 
     default:
       return state;

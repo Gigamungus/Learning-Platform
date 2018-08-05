@@ -103,3 +103,26 @@ export const editCourseDescription = newDescription => ({
 export const toggleCoursePrivacy = () => ({
   type: EDIT_COURSE.PRIVACY
 });
+
+export const editCourseImage = newImage => ({
+  type: EDIT_COURSE.IMAGE,
+  newImage
+});
+
+export const saveCourseChanges = (courseId, JWT, courseEdit) => {
+  return dispatch => {
+    fetch(`${apiLocation}/api/editCourse/${courseId}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `bearer ${JWT}`
+      },
+      body: JSON.stringify({
+        JWT,
+        courseEdit
+      })
+    })
+      .then(data => data.json())
+      .then(data => console.log(data));
+  };
+};
