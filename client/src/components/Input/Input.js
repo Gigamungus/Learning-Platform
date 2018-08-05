@@ -9,7 +9,8 @@ const Input = ({
   value,
   type,
   errorMessage,
-  onChange
+  onChange,
+  title
 }) => {
   const errorStyle = {
     display: errorMessage ? "block" : "none",
@@ -17,6 +18,7 @@ const Input = ({
   };
   return (
     <div className="Input">
+      <p className="InputTitle">{title}</p>
       <input
         className="Input-input"
         type={type}

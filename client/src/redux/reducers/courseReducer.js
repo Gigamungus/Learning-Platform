@@ -83,6 +83,12 @@ const course = (state = initialState, action) => {
           thumbnailImg: action.newImage
         })
       });
+      case EDIT_COURSE.ADD_SECTION:
+        return Object.assign({}, state, {
+          courseToEditTopLevel: Object.assign({}, state.courseToEditTopLevel, {
+            
+          })
+        })
 
     default:
       return state;

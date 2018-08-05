@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "./../../Input/Input";
 import Button from "./../../Button/Button";
 import LoadSpinner from "./../../LoadSpinner/LoadSpinner";
+import SectionEditorContainer from "./SectionEditor/SectionEditorContainer";
 
 class CourseCreatorDashboard extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class CourseCreatorDashboard extends Component {
     this.props.resetSelf();
   }
   render() {
+    console.log(this.props);
     if (this.props.userMayNotViewCourse) {
       clearInterval(this.persistentLoadCourse);
       return <div>this course has been made private.</div>;
@@ -70,21 +72,29 @@ class CourseCreatorDashboard extends Component {
           </div>{" "}
           <div className="privacyToggle">{privacyToggle}</div>
           <Input
+            title="course title"
             placeholder="course title"
             value={course.title}
             onChange={this.titleChangeHelper.bind(this)}
           />
           <Input
+            title="course description"
             placeholder="course description"
             value={course.description}
             onChange={this.descriptionChangeHelper.bind(this)}
           />
           <Input
+            title="course image URL"
             placeholder="course image"
             value={course.thumbnailImg}
             onChange={this.imageChangeHelper.bind(this)}
           />
           <img src={course.thumbnailImg} alt="course thumbnail" />
+          <div className="sectionEditor">
+            <SectionEditorContainer
+              sections={this.props.course.courseContent.sections}
+            />
+          </div>
         </div>
       );
 
