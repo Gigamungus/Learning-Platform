@@ -38,7 +38,6 @@ class CourseCreatorDashboard extends Component {
     this.props.resetSelf();
   }
   render() {
-    console.log(this.props);
     if (this.props.userMayNotViewCourse) {
       clearInterval(this.persistentLoadCourse);
       return <div>this course has been made private.</div>;
@@ -91,7 +90,15 @@ class CourseCreatorDashboard extends Component {
           />
           <img src={course.thumbnailImg} alt="course thumbnail" />
           <div className="sectionEditor">
-            <Link to={`/`}>edit course content</Link>
+            <div className="sectionEditorLink">
+              <Link
+                to={`/courseeditor/${
+                  this.props.match.params.courseId
+                }/sectioneditor`}
+              >
+                Edit course content
+              </Link>
+            </div>
           </div>
         </div>
       );

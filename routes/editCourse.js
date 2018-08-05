@@ -1,6 +1,6 @@
 const User = require("./../schemas/UserSchema");
 const Course = require("./../schemas/CourseSchema");
-const secretOrKey = require("./../config/secrets").secret;
+const secretOrKey = process.env.secret || require("./../config/secrets").secret;
 const jwt = require("jsonwebtoken");
 
 const editCourse = (req, res) => {

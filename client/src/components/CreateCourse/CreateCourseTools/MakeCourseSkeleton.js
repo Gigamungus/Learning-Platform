@@ -9,16 +9,14 @@ class MakeCourseSkeleton extends Component {
       this.props.createCourseSkeleton(this.props.JWT);
     }, 6000);
   }
-  componentWillUnmount() {  
+  componentWillUnmount() {
     clearInterval(this.persistentCreateCourseSkeleton);
     this.props.resetSelf();
   }
   render() {
     if (this.props.createdCourseSkeleton) {
       clearInterval(this.persistentCreateCourseSkeleton);
-      return (
-        <Redirect to={`/createnewcourse/${this.props.courseId}/dashboard`} />
-      );
+      return <Redirect to={`/courseeditor/${this.props.courseId}/dashboard`} />;
     } else if (this.props.creatingCourseSkeleton) {
       return (
         <div className="CreatingCourseSkeleton">

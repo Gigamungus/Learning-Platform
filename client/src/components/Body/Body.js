@@ -12,7 +12,7 @@ class Body extends Component {
     return (
       <div className={classes.join(" ")}>
         <Route exact path="/" component={HomeScreenContainer} />
-        <Route path="/createnewcourse" component={CreateCourseContainer} />
+        <Route path="/courseeditor" component={CreateCourseContainer} />
       </div>
     );
   }

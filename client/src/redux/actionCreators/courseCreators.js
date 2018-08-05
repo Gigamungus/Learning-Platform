@@ -126,8 +126,3 @@ export const saveCourseChanges = (courseId, JWT, courseEdit) => {
       .then(data => console.log(data));
   };
 };
-
-export const addNewCourseSection = title => ({
-  type: EDIT_COURSE.ADD_SECTION,
-  title
-});

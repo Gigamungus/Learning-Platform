@@ -18,6 +18,10 @@
     width: 90%;
 }
 
+.CreateCourse .sectionEditorLink a {
+    color: white;
+}
+
 @media only screen and (min-width: 768px) {
     .CreateCourse .CourseCreatorDashboard {
         width: 70%;

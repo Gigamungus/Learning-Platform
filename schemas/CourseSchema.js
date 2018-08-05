@@ -43,7 +43,7 @@ const courseSchema = Schema({
   courseContent: {
     sections: [
       {
-        sectionRef: {
+        _id: {
           type: Schema.Types.ObjectId,
           ref: "CourseSection"
         },
