@@ -47,16 +47,7 @@ const courseSchema = Schema({
           type: Schema.Types.ObjectId,
           ref: "CourseSection"
         },
-        sectionTitle: String,
-        pages: [
-          {
-            pageRef: {
-              type: Schema.Types.ObjectId,
-              ref: "CoursePage"
-            },
-            pageTitle: String
-          }
-        ]
+        sectionTitle: String
       }
     ]
   },

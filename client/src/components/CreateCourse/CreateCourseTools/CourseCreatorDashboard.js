@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Input from "./../../Input/Input";
 import Button from "./../../Button/Button";
 import LoadSpinner from "./../../LoadSpinner/LoadSpinner";
-import SectionEditorContainer from "./SectionEditor/SectionEditorContainer";
+import { Link } from "react-router-dom";
 
 class CourseCreatorDashboard extends Component {
   constructor(props) {
@@ -91,9 +91,7 @@ class CourseCreatorDashboard extends Component {
           />
           <img src={course.thumbnailImg} alt="course thumbnail" />
           <div className="sectionEditor">
-            <SectionEditorContainer
-              sections={this.props.course.courseContent.sections}
-            />
+            <Link to={`/`}>edit course content</Link>
           </div>
         </div>
       );
