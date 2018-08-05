@@ -21,7 +21,6 @@ const sectionReducer = (state = initialState, action) => {
         courseName: action.courseTitle
       });
     case EDIT_COURSE.ADDED_SECTION:
-      console.log(action);
       let newSections = state.sections.slice();
       newSections.push(action.section);
       return Object.assign({}, state, {

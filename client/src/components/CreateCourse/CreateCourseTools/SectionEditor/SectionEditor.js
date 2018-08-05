@@ -39,7 +39,6 @@ class SectionEditor extends Component {
       if (sections.length === 0) {
         sections = "your course has no content, go ahead and add some!";
       } else {
-        console.log(sections);
         sections = sections.map((section, index) => (
           <div key={index}>{section.sectionTitle}</div>
         ));
