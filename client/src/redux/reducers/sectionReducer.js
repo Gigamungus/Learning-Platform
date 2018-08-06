@@ -24,7 +24,7 @@ const sectionReducer = (state = initialState, action) => {
           expanded: false,
           loadingSectionContent: false,
           loadedSectionContent: false,
-          sectionContent: []
+          sectionContent: undefined
         });
       });
       return Object.assign({}, state, {
@@ -35,7 +35,15 @@ const sectionReducer = (state = initialState, action) => {
       });
     case EDIT_COURSE.ADDED_SECTION:
       let newSections = state.sections.slice();
-      newSections.push(action.section);
+      let newSection = Object.assign({}, action.section, {
+        position: newSections.length,
+        expanded: false,
+        loadingSectionContent: false,
+        loadedSectionContent: false,
+        sectionContent: undefined
+      });
+
+      newSections.push(newSection);
       return Object.assign({}, state, {
         sections: newSections
       });
@@ -63,7 +71,6 @@ const sectionReducer = (state = initialState, action) => {
       return loadingSectionContentState;
 
     case LOAD_SECTIONS.LOADED_SECTION_CONTENT:
-      console.log(action);
       let loadedSectionContentState = Object.assign({}, state);
 
       loadedSectionContentState.sections[

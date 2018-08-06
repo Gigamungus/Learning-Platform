@@ -27,6 +27,7 @@ const getRelevantCourses = require("./routes/getRelevantCourses");
 const getCourse = require("./routes/getCourse");
 const editCourse = require("./routes/editCourse");
 const createNewCourseSection = require("./routes/createNewCourseSection");
+const loadSectionContent = require("./routes/loadSectionContent");
 
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -89,6 +90,10 @@ app.get("/api/getrelevantcourses/:howMany", (req, res) => {
 
 app.get("/api/getcourse/:courseId", (req, res) => {
   getCourse(req, res);
+});
+
+app.get("/api/loadsectioncontent/:sectionId", (req, res) => {
+  loadSectionContent(req, res);
 });
 
 app.get("*", (req, res) => {

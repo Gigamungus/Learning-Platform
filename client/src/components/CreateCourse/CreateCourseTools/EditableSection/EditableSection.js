@@ -38,6 +38,7 @@ class EditableSection extends Component {
         sectionContent = <LoadSpinner />;
       } else if (this.props.loadedSectionContent) {
         //do stuff with section content here
+        console.log(this.props);
         //write code above here
       } else {
         sectionContent = <LoadSpinner />;

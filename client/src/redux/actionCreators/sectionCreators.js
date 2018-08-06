@@ -87,7 +87,6 @@ export const loadSectionContent = (sectionId, position, JWT) => {
       .then(data => {
         if (data.error) {
         } else {
-          console.log("loaded");
           dispatch(loadedSectionContent(position, data));
         }
       });
