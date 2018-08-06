@@ -1,0 +1,21 @@
+.EditableSection {
+    border: 1px solid white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 50px;
+}
+
+.EditableSection:hover {
+    cursor: pointer;
+}
+
+.EditableSection .EditableSectionTitle {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    display: flex;
+    flex-flow: row;
+    justify-content: left;
+    align-items: center;
+}

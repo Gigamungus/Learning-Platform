@@ -1,6 +1,13 @@
 .SectionEditor {
     max-width: 100%;
-    background-color: #111111;
+    background-color: #282828;
     padding: 20px;
     text-align: center;
+}
+.SectionEditor .SectionEditorTitle {
+    text-transform: capitalize;
+    padding-bottom: 40px;
+}
+.SectionEditor .editableSectionsContainer {
+    margin-bottom: 15px;
 }

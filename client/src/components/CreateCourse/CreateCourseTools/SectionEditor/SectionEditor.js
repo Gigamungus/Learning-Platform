@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "./../../../Input/Input";
 import "./SectionEditor.css";
 import LoadSpinner from "../../../LoadSpinner/LoadSpinner";
+import EditableSectionContainer from "./../EditableSection/EditableSectionContainer";
 
 class SectionEditor extends Component {
   addNewCourseSectionHelper(e) {
@@ -40,13 +41,16 @@ class SectionEditor extends Component {
         sections = "your course has no content, go ahead and add some!";
       } else {
         sections = sections.map((section, index) => (
-          <div key={index}>{section.sectionTitle}</div>
+          <EditableSectionContainer
+            key={index}
+            sectionPosition={section.position}
+          />
         ));
       }
       return (
         <div className="SectionEditor">
-          <div>{this.props.courseName}</div>
-          {sections}
+          <div className="SectionEditorTitle">{this.props.courseName}</div>
+          <div className="editableSectionsContainer">{sections}</div>
           <form action="" onSubmit={this.addNewCourseSectionHelper.bind(this)}>
             <Input placeholder="add course section" />
           </form>
