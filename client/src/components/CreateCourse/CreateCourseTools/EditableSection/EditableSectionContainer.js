@@ -3,7 +3,8 @@ import EditableSection from "./EditableSection";
 import {
   toggleEditableSectionExpanded,
   loadSectionContent,
-  updateSectionDescription
+  updateSectionDescription,
+  createNewPage
 } from "./../../../../redux/actionCreators/sectionCreators";
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
       .loadedSectionContent
       ? state.section.sections[position].sectionContent.loadedDescription
       : false,
+    creatingPage: state.section.sections[position].creatingNewPage,
     JWT: state.user.authJWT
   };
 };
@@ -36,13 +38,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(loadSectionContent(sectionId, position, JWT)),
   updateDescription: (position, newDescription, sectionId, JWT) =>
     dispatch(
-      updateSectionDescription(
-        position,
-        newDescription,
-        sectionId,
-        JWT
-      )
-    )
+      updateSectionDescription(position, newDescription, sectionId, JWT)
+    ),
+  createNewPage: (position, pageName, sectionId, JWT) =>
+    dispatch(createNewPage(position, pageName, sectionId, JWT))
 });
 
 export default connect(

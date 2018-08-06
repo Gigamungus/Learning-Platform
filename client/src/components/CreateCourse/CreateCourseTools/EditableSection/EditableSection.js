@@ -18,6 +18,16 @@ class EditableSection extends Component {
     );
   }
 
+  createPageHelper(e) {
+    e.preventDefault();
+    this.props.createNewPage(
+      this.props.position,
+      e.target[0].value,
+      this.props.sectionId,
+      this.props.JWT
+    );
+  }
+
   componentWillUnmount() {
     clearInterval(this.persistentLoadSectionContent);
   }
@@ -75,7 +85,7 @@ class EditableSection extends Component {
         if (this.props.sectionContent.pages.length === 0) {
           pages = "this section does not have any page content, add some below";
         } else {
-          pages = this.props.sectionContent.pages;
+          pages = this.props.sectionContent.pages.map(page => page.name);
         }
 
         //tie it all together
@@ -88,15 +98,20 @@ class EditableSection extends Component {
                 <Input
                   placeholder="edit description"
                   defaultValue={this.props.sectionContent.description}
-                  title="edit description"
+                  title="Edit description"
                 />
               </form>
             </div>
             <div className="EditableSectionPages">
-              <div>{pages}</div>
-              <form className="createPageForm">
-                <p>Create new page</p>
-                <Input placeholder="page title" />
+              <div>
+                {pages}
+                {this.props.creatingPage ? <LoadSpinner /> : ""}
+              </div>
+              <form
+                className="createPageForm"
+                onSubmit={this.createPageHelper.bind(this)}
+              >
+                <Input title="Create new page" placeholder="page title" />
               </form>
             </div>
           </div>

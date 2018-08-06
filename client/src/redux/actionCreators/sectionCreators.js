@@ -149,3 +149,45 @@ export const updatedSectionDescription = (sectionPosition, description) => ({
   sectionPosition,
   description
 });
+
+export const createNewPage = (position, pageName, sectionId, JWT) => {
+  return dispatch => {
+    dispatch(creatingNewPage(position));
+    fetch(`${apiLocation}/api/createnewpage`, {
+      method: "POST",
+      headers: {
+        authorization: `bearer ${JWT}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        pageName,
+        sectionId
+      })
+    })
+      .then(data => {
+        if (data.status === 404) {
+          return { error: "could not reach route" };
+        } else {
+          return data.json();
+        }
+      })
+      .then(data => {
+        if (data.error) {
+          console.log(data);
+        } else {
+          dispatch(createdNewPage(position, data));
+        }
+      });
+  };
+};
+
+export const creatingNewPage = position => ({
+  type: EDITABLE_SECTION.CREATING_NEW_PAGE,
+  position
+});
+
+export const createdNewPage = (position, page) => ({
+  type: EDITABLE_SECTION.CREATED_NEW_PAGE,
+  position,
+  page
+});

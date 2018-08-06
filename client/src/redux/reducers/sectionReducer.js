@@ -3,11 +3,20 @@ import {
   EDIT_COURSE,
   EDITABLE_SECTION
 } from "./../actionCreators/index";
+import { createdNewPage } from "../actionCreators/sectionCreators";
 const initialState = {
   courseName: "",
   sections: [],
   loadingSections: false,
   loadedSections: false
+};
+
+const initialSectionState = {
+  expanded: false,
+  loadingSectionContent: false,
+  loadedSectionContent: false,
+  sectionContent: undefined,
+  creatingNewPage: false
 };
 
 const sectionReducer = (state = initialState, action) => {
@@ -19,13 +28,14 @@ const sectionReducer = (state = initialState, action) => {
       });
     case LOAD_SECTIONS.LOADED:
       let sections = action.sections.map((sect, index) => {
-        return Object.assign({}, sect, {
-          position: index,
-          expanded: false,
-          loadingSectionContent: false,
-          loadedSectionContent: false,
-          sectionContent: undefined
-        });
+        return Object.assign(
+          {},
+          sect,
+          {
+            position: index
+          },
+          initialSectionState
+        );
       });
       return Object.assign({}, state, {
         loadingSections: false,
@@ -35,13 +45,14 @@ const sectionReducer = (state = initialState, action) => {
       });
     case EDIT_COURSE.ADDED_SECTION:
       let newSections = state.sections.slice();
-      let newSection = Object.assign({}, action.section, {
-        position: newSections.length,
-        expanded: false,
-        loadingSectionContent: false,
-        loadedSectionContent: false,
-        sectionContent: undefined
-      });
+      let newSection = Object.assign(
+        {},
+        action.section,
+        {
+          position: newSections.length
+        },
+        initialSectionState
+      );
 
       newSections.push(newSection);
       return Object.assign({}, state, {
@@ -117,6 +128,22 @@ const sectionReducer = (state = initialState, action) => {
         action.description;
 
       return updatedDescriptionState;
+
+    case EDITABLE_SECTION.CREATING_NEW_PAGE:
+      let creatingNewPageState = Object.assign({}, state);
+
+      creatingNewPageState.sections[action.position].creatingNewPage = true;
+
+      return creatingNewPageState;
+
+    case EDITABLE_SECTION.CREATED_NEW_PAGE:
+      let createdNewPageState = Object.assign({}, state);
+
+      createdNewPageState.sections[action.position].creatingNewPage = false;
+
+      createdNewPageState.sections[action.position].sectionContent.pages.push(
+        action.page
+      );
 
     default:
       return state;
