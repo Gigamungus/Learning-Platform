@@ -1,21 +1,38 @@
 .EditableSection {
-    border: 1px solid white;
     display: flex;
+    flex-direction: column;
     justify-content: left;
     align-items: center;
-    height: 50px;
+    margin-bottom: 10px;
 }
 
-.EditableSection:hover {
+.EditableSection .EditableSectionTitle:hover {
     cursor: pointer;
 }
 
 .EditableSection .EditableSectionTitle {
     width: 100%;
-    height: 100%;
-    padding: 0 15px;
     display: flex;
     flex-flow: row;
-    justify-content: left;
-    align-items: center;
+    justify-content: space-between;
+    background-color: #444444;
+}
+
+.EditableSection .EditableSectionTitle>* {
+    padding: 20px 15px;
+}
+
+.EditableSection .sectionContentEditorContainer {
+    width: 100%;
+    background-color: #181818;
+    padding: 20px 0px;
+}
+
+.EditableSection .EditableSectionContent {
+    width: 90%;
+    margin: auto;
+}
+
+.EditableSection .EditableSectionContent>* {
+    padding: 10px 0;
 }

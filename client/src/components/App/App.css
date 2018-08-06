@@ -72,3 +72,13 @@
 .App .full-width {
     width: 100%;
 }
+
+.App .hidden {
+    display: none;
+}
+
+.App .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

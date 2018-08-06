@@ -103,3 +103,49 @@ export const loadedSectionContent = (sectionPosition, sectionContent) => ({
   sectionPosition,
   sectionContent
 });
+
+export const updateSectionDescription = (
+  position,
+  newDescription,
+  sectionId,
+  JWT
+) => {
+  return dispatch => {
+    dispatch(updatingSectionDescription(position));
+    return fetch(`${apiLocation}/api/updatesectiondescription/${sectionId}`, {
+      method: "POST",
+      headers: {
+        Authorization: `bearer ${JWT}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        newDescription
+      })
+    })
+      .then(data => {
+        if (data.status === 404) {
+          return { error: "could not reach route" };
+        } else {
+          return data.json();
+        }
+      })
+      .then(data => {
+        if (data.error) {
+          console.log(data);
+        } else {
+          dispatch(updatedSectionDescription(position, data.newDescription));
+        }
+      });
+  };
+};
+
+export const updatingSectionDescription = sectionPosition => ({
+  type: EDITABLE_SECTION.UPDATING_DESCRIPTION,
+  sectionPosition
+});
+
+export const updatedSectionDescription = (sectionPosition, description) => ({
+  type: EDITABLE_SECTION.UPDATED_DESCRIPTION,
+  sectionPosition,
+  description
+});

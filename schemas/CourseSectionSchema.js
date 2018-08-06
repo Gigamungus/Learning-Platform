@@ -17,7 +17,7 @@ const courseSectionSchema = Schema({
   },
   pages: [
     {
-      pageRef: {
+      _id: {
         type: Schema.Types.ObjectId,
         ref: "CoursePage"
       },

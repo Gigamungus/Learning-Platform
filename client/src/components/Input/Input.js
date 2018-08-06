@@ -7,6 +7,7 @@ const Input = ({
   name,
   autoComplete = "off",
   value,
+  defaultValue,
   type,
   errorMessage,
   onChange,
@@ -26,6 +27,7 @@ const Input = ({
         name={name}
         autoComplete={autoComplete}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
       />
       <div style={errorStyle} className="red error-message">

@@ -88,6 +88,36 @@ const sectionReducer = (state = initialState, action) => {
 
       return loadedSectionContentState;
 
+    case EDITABLE_SECTION.UPDATING_DESCRIPTION:
+      let updatingDescriptionState = Object.assign({}, state);
+
+      updatingDescriptionState.sections[
+        action.sectionPosition
+      ].sectionContent.loadingDescription = true;
+
+      updatingDescriptionState.sections[
+        action.sectionPosition
+      ].sectionContent.loadedDescription = false;
+
+      return updatingDescriptionState;
+    case EDITABLE_SECTION.UPDATED_DESCRIPTION:
+      let updatedDescriptionState = Object.assign({}, state);
+
+      updatedDescriptionState.sections[
+        action.sectionPosition
+      ].sectionContent.loadingDescription = false;
+
+      updatedDescriptionState.sections[
+        action.sectionPosition
+      ].sectionContent.loadedDescription = true;
+
+      updatedDescriptionState.sections[
+        action.sectionPosition
+      ].sectionContent.description =
+        action.description;
+
+      return updatedDescriptionState;
+
     default:
       return state;
   }

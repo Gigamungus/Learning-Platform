@@ -1,11 +1,23 @@
 import React, { Component } from "react";
 import "./EditableSection.css";
 import LoadSpinner from "../../../LoadSpinner/LoadSpinner";
+import Input from "./../../../Input/Input";
 
 class EditableSection extends Component {
   toggleSelfExpandedHelper() {
     this.props.toggleSelfExpanded(this.props.position);
   }
+
+  updateDescriptionHelper(e) {
+    e.preventDefault();
+    this.props.updateDescription(
+      this.props.position,
+      e.target[0].value,
+      this.props.sectionId,
+      this.props.JWT
+    );
+  }
+
   componentWillUnmount() {
     clearInterval(this.persistentLoadSectionContent);
   }
@@ -37,9 +49,61 @@ class EditableSection extends Component {
       if (this.props.loadingSectionContent) {
         sectionContent = <LoadSpinner />;
       } else if (this.props.loadedSectionContent) {
-        //do stuff with section content here
-        console.log(this.props);
-        //write code above here
+        /////////////////////////
+        //write code below here//
+        /////////////////////////
+
+        //description stuff
+
+        let description;
+
+        if (this.props.loadingSectionDescription) {
+          description = <LoadSpinner />;
+        } else {
+          if (this.props.sectionContent.description === "") {
+            description =
+              "this course does not have a description, add one below";
+          } else {
+            description = this.props.sectionContent.description;
+          }
+        }
+
+        //content stuff
+
+        let pages;
+
+        if (this.props.sectionContent.pages.length === 0) {
+          pages = "this section does not have any page content, add some below";
+        } else {
+          pages = this.props.sectionContent.pages;
+        }
+
+        //tie it all together
+
+        sectionContent = (
+          <div className="EditableSectionContent">
+            <div className="EditableSectionDescription">
+              <div>{description}</div>
+              <form onSubmit={this.updateDescriptionHelper.bind(this)}>
+                <Input
+                  placeholder="edit description"
+                  defaultValue={this.props.sectionContent.description}
+                  title="edit description"
+                />
+              </form>
+            </div>
+            <div className="EditableSectionPages">
+              <div>{pages}</div>
+              <form className="createPageForm">
+                <p>Create new page</p>
+                <Input placeholder="page title" />
+              </form>
+            </div>
+          </div>
+        );
+        ///////////////////////////////////
+        //to actually edit course content//
+        ///////////////////////////////////
       } else {
         sectionContent = <LoadSpinner />;
       }
@@ -50,9 +114,23 @@ class EditableSection extends Component {
           className="EditableSectionTitle"
           onClick={this.toggleSelfExpandedHelper.bind(this)}
         >
-          {this.props.sectionTitle}
+          <div className="truncate">{this.props.sectionTitle}</div>
+          <div>
+            {" "}
+            <i
+              className={`fas ${
+                this.props.expanded ? "fa-caret-down" : "fa-caret-left"
+              }`}
+            />{" "}
+          </div>
         </div>
-        <div className="sectionContentEditor">{sectionContent}</div>
+        <div
+          className={`sectionContentEditorContainer ${
+            this.props.expanded ? "" : "hidden"
+          }`}
+        >
+          {sectionContent}
+        </div>
       </div>
     );
   }

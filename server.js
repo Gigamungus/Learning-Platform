@@ -28,6 +28,7 @@ const getCourse = require("./routes/getCourse");
 const editCourse = require("./routes/editCourse");
 const createNewCourseSection = require("./routes/createNewCourseSection");
 const loadSectionContent = require("./routes/loadSectionContent");
+const updateSectionDescription = require("./routes/updateSectionDescription");
 
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -81,6 +82,14 @@ app.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     createNewCourseSection(req, res);
+  }
+);
+
+app.post(
+  "/api/updatesectiondescription/:sectionId",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    updateSectionDescription(req, res);
   }
 );
 
