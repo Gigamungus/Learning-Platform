@@ -21,8 +21,7 @@ const courseSectionSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: "CoursePage"
       },
-      pageTitle: String,
-      pageType: String
+      pageTitle: String
     }
   ]
 });

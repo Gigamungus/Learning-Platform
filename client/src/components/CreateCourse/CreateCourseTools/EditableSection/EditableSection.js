@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./EditableSection.css";
 import LoadSpinner from "../../../LoadSpinner/LoadSpinner";
 import Input from "./../../../Input/Input";
+import { Link } from "react-router-dom";
 
 class EditableSection extends Component {
   toggleSelfExpandedHelper() {
@@ -85,7 +86,13 @@ class EditableSection extends Component {
         if (this.props.sectionContent.pages.length === 0) {
           pages = "this section does not have any page content, add some below";
         } else {
-          pages = this.props.sectionContent.pages.map(page => page.name);
+          pages = this.props.sectionContent.pages.map((page, index) => (
+            <div key={index} className="EditableSectionPage">
+              <Link to={`/courseeditor/${page._id}/pageeditor`}>
+                {page.pageTitle}
+              </Link>
+            </div>
+          ));
         }
 
         //tie it all together

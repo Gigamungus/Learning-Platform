@@ -3,7 +3,6 @@ import {
   EDIT_COURSE,
   EDITABLE_SECTION
 } from "./../actionCreators/index";
-import { createdNewPage } from "../actionCreators/sectionCreators";
 const initialState = {
   courseName: "",
   sections: [],
@@ -140,11 +139,10 @@ const sectionReducer = (state = initialState, action) => {
       let createdNewPageState = Object.assign({}, state);
 
       createdNewPageState.sections[action.position].creatingNewPage = false;
-
       createdNewPageState.sections[action.position].sectionContent.pages.push(
         action.page
       );
-
+      return createdNewPageState;
     default:
       return state;
   }
