@@ -1,0 +1,36 @@
+.TextArea {
+    display: inline-block;
+    text-align: center;
+    width: 99%;
+}
+
+.TextArea .Area {
+    background-color: #555555;
+    width: 100%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.TextArea .Area:focus {
+    border: 1.5px solid steelblue;
+}
+
+.TextArea .Area::placeholder {
+    color: white;
+}
+
+.TextArea .Area>* {
+    color: white;
+}
+
+.TextArea .AreaName {
+    text-transform: capitalize;
+}
+
+.TextArea .AreaError {
+    color: red;
+    text-transform: uppercase;
+}

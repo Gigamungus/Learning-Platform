@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const secretOrKey = process.env.secret || require("./../config/secrets").secret;
 
 const getCourse = (req, res) => {
-  console.log(secretOrKey);
   let error = { error: undefined };
   Course.findById(req.params.courseId, (err, course) => {
     if (err) {

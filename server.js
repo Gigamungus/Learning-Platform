@@ -19,19 +19,6 @@ const DBURL = secrets.DBURL;
 const path = require("path");
 app.use(express.static(path.join(__dirname, "client", "build")));
 
-//routes
-const createUser = require("./routes/createUser");
-const loginUser = require("./routes/loginUser");
-const createCourse = require("./routes/createCourse");
-const getRelevantCourses = require("./routes/getRelevantCourses");
-const getCourse = require("./routes/getCourse");
-const editCourse = require("./routes/editCourse");
-const createNewCourseSection = require("./routes/createNewCourseSection");
-const loadSectionContent = require("./routes/loadSectionContent");
-const updateSectionDescription = require("./routes/updateSectionDescription");
-const createNewPage = require("./routes/createNewPage");
-const getPageContent = require("./routes/getPageContent");
-
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -45,6 +32,20 @@ passport.use(authStrat);
 
 //enable cors
 app.use(cors());
+
+//routes
+const createUser = require("./routes/createUser");
+const loginUser = require("./routes/loginUser");
+const createCourse = require("./routes/createCourse");
+const getRelevantCourses = require("./routes/getRelevantCourses");
+const getCourse = require("./routes/getCourse");
+const editCourse = require("./routes/editCourse");
+const createNewCourseSection = require("./routes/createNewCourseSection");
+const loadSectionContent = require("./routes/loadSectionContent");
+const updateSectionDescription = require("./routes/updateSectionDescription");
+const createNewPage = require("./routes/createNewPage");
+const getPageContent = require("./routes/getPageContent");
+const editPage = require("./routes/editPage");
 
 mongoose.connect(
   DBURL,
@@ -100,6 +101,14 @@ app.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     createNewPage(req, res);
+  }
+);
+
+app.put(
+  "/api/editpage/:pageId",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    editPage(req, res);
   }
 );
 

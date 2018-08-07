@@ -1,0 +1,28 @@
+.PageCreator {
+    width: 90%;
+    margin: auto;
+}
+
+.PageCreator>* {
+    margin: 20px 0;
+}
+
+.PageCreator a {
+    color: steelblue;
+    text-decoration: none;
+}
+
+.PageCreator .pageTitleEditor {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.PageCreator .pageTitleEditor h2 {
+    margin-bottom: 10px;
+}
+
+.PageCreator .pageDescriptionEditor p {
+    margin-bottom: 10px;
+}
+
+/* .PageCreator . */

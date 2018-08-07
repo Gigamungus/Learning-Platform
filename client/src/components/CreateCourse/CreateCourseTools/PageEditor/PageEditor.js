@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import LoadSpinner from "../../../LoadSpinner/LoadSpinner";
 import "./PageEditor.css";
 import { Link } from "react-router-dom";
+import TextArea from "./../../../TextArea/TextArea";
+import Input from "./../../../Input/Input";
 
 class PageEditor extends Component {
   componentDidMount() {
@@ -25,6 +27,7 @@ class PageEditor extends Component {
     ) {
       return <LoadSpinner />;
     } else {
+      let pageContent = "hello";
       return (
         <div className="PageCreator">
           <div>
@@ -36,10 +39,33 @@ class PageEditor extends Component {
               go back to editing section
             </Link>
           </div>
+
           <div className="pageTitleEditor">
-            {this.props.pageContent.pageTitle}
+            <h2>{this.props.pageContent.pageTitle}</h2>
+            <form>
+              <Input placeholder="change page name" />
+            </form>
           </div>
-          <div>{this.props.pageContent.pageDescription}</div>
+
+          <div className="pageDescriptionEditor">
+            <p>{this.props.pageContent.pageDescription}</p>
+            <form>
+              <TextArea
+                rows="4"
+                placeholder="change page description"
+                name="change description"
+                defaultvalue={this.props.pageContent.pageDescription}
+              />
+            </form>
+          </div>
+
+          <div className="pageContentEditor">
+            <p>{pageContent}</p>
+            <form>
+              <Input placeholder="content type" />
+              <TextArea name="content" placeholder="content" />
+            </form>
+          </div>
         </div>
       );
     }
