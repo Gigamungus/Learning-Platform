@@ -57,6 +57,7 @@ const createNewPage = (req, res) => {
                   let newCoursePage = {
                     pageTitle: pageName,
                     pageDescription: pageDescription,
+                    parentCourse: courseId,
                     parentSection: sectionId,
                     elements: []
                   };
@@ -88,7 +89,6 @@ const createNewPage = (req, res) => {
                             error.error = "couldn't find section";
                             res.json(error);
                           } else {
-                            console.log(section);
                             res.json(page);
                           }
                         }

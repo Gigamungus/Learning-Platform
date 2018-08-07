@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import HomeScreenContainer from "./../HomeScreen/HomeScreenContainer";
 import CreateCourseContainer from "./../CreateCourse/CreateCourseContainer";
 import PageEditorContainer from "./../CreateCourse/CreateCourseTools/PageEditor/PageEditorContainer";
+import SectionEditorContainer from "./../CreateCourse/CreateCourseTools/SectionEditor/SectionEditorContainer";
 
 class Body extends Component {
   render() {
@@ -18,6 +19,11 @@ class Body extends Component {
           exact
           path="/courseeditor/:pageId/pageeditor"
           component={PageEditorContainer}
+        />
+        <Route
+          exact
+          path="/courseeditor/:courseId/sectioneditor"
+          component={SectionEditorContainer}
         />
       </div>
     );

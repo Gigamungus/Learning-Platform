@@ -4,7 +4,6 @@ import "./CreateCourse.css";
 import { Route } from "react-router-dom";
 import CourseCreatorDashboard from "./CreateCourseTools/CourseCreatorDashboard";
 import MakeCourseSkeleton from "./CreateCourseTools/MakeCourseSkeleton";
-import SectionEditorContainer from "./CreateCourseTools/SectionEditor/SectionEditorContainer";
 
 class CreateCourse extends Component {
   render() {
@@ -46,12 +45,6 @@ class CreateCourse extends Component {
               saveCourseChanges={this.props.saveCourseChanges}
             />
           )}
-        />
-
-        <Route
-          exact
-          path="/courseeditor/:courseId/sectioneditor"
-          component={SectionEditorContainer}
         />
       </div>
     );

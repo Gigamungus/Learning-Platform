@@ -5,6 +5,7 @@ import profile from "./profileMenuReducer";
 import course from "./courseReducer";
 import homeScreen from "./homeScreenReducer";
 import section from "./sectionReducer";
+import page from "./pageReducer";
 
 export default combineReducers({
   sidebar,
@@ -12,5 +13,6 @@ export default combineReducers({
   profile,
   course,
   homeScreen,
-  section
+  section,
+  page
 });

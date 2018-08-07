@@ -12,9 +12,16 @@ export const getCourseSections = (courseId, JWT) => {
         authorization: JWT
       }
     })
-      .then(data => data.json())
+      .then(data => {
+        if (data.status === 404) {
+          return { error: "could not reach route" };
+        } else {
+          return data.json();
+        }
+      })
       .then(data => {
         if (data.error) {
+          console.log(data);
         } else {
           dispatch(
             loadedCourseSections(data.courseContent.sections, data.title)

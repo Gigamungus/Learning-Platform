@@ -27,6 +27,7 @@ class EditableSection extends Component {
       this.props.sectionId,
       this.props.JWT
     );
+    e.target[0].value = "";
   }
 
   componentWillUnmount() {

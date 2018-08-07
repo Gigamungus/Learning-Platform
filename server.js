@@ -30,6 +30,7 @@ const createNewCourseSection = require("./routes/createNewCourseSection");
 const loadSectionContent = require("./routes/loadSectionContent");
 const updateSectionDescription = require("./routes/updateSectionDescription");
 const createNewPage = require("./routes/createNewPage");
+const getPageContent = require("./routes/getPageContent");
 
 //body middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -112,6 +113,10 @@ app.get("/api/getcourse/:courseId", (req, res) => {
 
 app.get("/api/loadsectioncontent/:sectionId", (req, res) => {
   loadSectionContent(req, res);
+});
+
+app.get("/api/getpagecontent/:pageId", (req, res) => {
+  getPageContent(req, res);
 });
 
 app.get("*", (req, res) => {

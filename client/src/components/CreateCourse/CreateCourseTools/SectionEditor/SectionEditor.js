@@ -3,6 +3,7 @@ import Input from "./../../../Input/Input";
 import "./SectionEditor.css";
 import LoadSpinner from "../../../LoadSpinner/LoadSpinner";
 import EditableSectionContainer from "./../EditableSection/EditableSectionContainer";
+import { Link } from "react-router-dom";
 
 class SectionEditor extends Component {
   addNewCourseSectionHelper(e) {
@@ -49,6 +50,11 @@ class SectionEditor extends Component {
       }
       return (
         <div className="SectionEditor">
+          <Link
+            to={`/courseeditor/${this.props.match.params.courseId}/dashboard`}
+          >
+            go back to dashboard
+          </Link>
           <div className="SectionEditorTitle">{this.props.courseName}</div>
           <div className="editableSectionsContainer">{sections}</div>
           <form action="" onSubmit={this.addNewCourseSectionHelper.bind(this)}>
