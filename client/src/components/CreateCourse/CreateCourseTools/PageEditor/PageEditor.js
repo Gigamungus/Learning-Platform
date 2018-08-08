@@ -102,8 +102,8 @@ class PageEditor extends Component {
           <div className="pageContentEditor">
             <div>{pageContent}</div>
             <form onSubmit={this.addSectionHelper.bind(this)}>
-              <Input placeholder="content type" />
-              <TextArea title="content" placeholder="content" />
+              <Input title="content" placeholder="content type" />
+              <TextArea placeholder="content" rows="5" />
 
               {this.props.addingElement ? (
                 <LoadSpinner />

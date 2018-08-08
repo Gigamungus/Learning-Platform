@@ -17,6 +17,10 @@
     text-transform: capitalize;
 }
 
-.PageCreator>* .Button {
-    margin-top: 10px;
+.PageCreator>* {
+    margin: 30px 0;
+}
+
+.PageCreator form>* {
+    margin: 10px 0;
 }
