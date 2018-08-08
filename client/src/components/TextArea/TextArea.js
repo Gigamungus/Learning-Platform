@@ -3,6 +3,7 @@ import React from "react";
 
 const TextArea = ({
   name = "",
+  title,
   id,
   columns,
   rows,
@@ -14,7 +15,9 @@ const TextArea = ({
 }) => {
   return (
     <div className="TextArea">
-      <p className="AreaName">{name}</p>
+      <label className="AreaName" style={{ display: title ? "block" : "none" }}>
+        {title}
+      </label>
       <textarea
         className="Area"
         name={name}

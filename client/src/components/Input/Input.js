@@ -19,7 +19,12 @@ const Input = ({
   };
   return (
     <div className="Input">
-      <p className="InputTitle">{title}</p>
+      <label
+        className="InputTitle"
+        style={{ display: title ? "block" : "none" }}
+      >
+        {title}
+      </label>
       <input
         className="Input-input"
         type={type}

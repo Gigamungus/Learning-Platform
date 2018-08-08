@@ -26,8 +26,9 @@
     color: white;
 }
 
-.TextArea .AreaName {
+.TextArea label {
     text-transform: capitalize;
+    margin: 5px 0;
 }
 
 .TextArea .AreaError {

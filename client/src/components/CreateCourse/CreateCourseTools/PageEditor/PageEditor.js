@@ -51,7 +51,10 @@ class PageEditor extends Component {
     ) {
       return <LoadSpinner />;
     } else {
-      let pageContent = "hello";
+      let pageContent = this.props.pageContent.elements.map(element => {
+        console.log(element);
+        return element.sectionContent;
+      });
       return (
         <div className="PageCreator">
           <div>
@@ -65,47 +68,48 @@ class PageEditor extends Component {
           </div>
 
           <div className="pageTitleEditor">
-            <h2>
+            <form onSubmit={this.changeTitleHelper.bind(this)}>
+              <Input
+                placeholder="change page name"
+                defaultValue={this.props.pageContent.pageTitle}
+                title="page title"
+              />
+
               {this.props.editingTitle ? (
                 <LoadSpinner />
               ) : (
-                this.props.pageContent.pageTitle
+                <Button type="submit" text="update title" />
               )}
-            </h2>
-            <form onSubmit={this.changeTitleHelper.bind(this)}>
-              <Input placeholder="change page name" />
-              <Button type="submit" text="update title" />
             </form>
           </div>
 
           <div className="pageDescriptionEditor">
-            <div>
-              {this.props.editingDescription ? (
-                <LoadSpinner />
-              ) : (
-                this.props.pageContent.pageDescription
-              )}
-            </div>
             <form onSubmit={this.changeDescriptionHelper.bind(this)}>
               <TextArea
                 rows="4"
                 placeholder="change page description"
-                name="change description"
+                title="change description"
                 defaultvalue={this.props.pageContent.pageDescription}
               />
-              <Button type="submit" text="update description" />
+              {this.props.editingDescription ? (
+                <LoadSpinner />
+              ) : (
+                <Button type="submit" text="update description" />
+              )}
             </form>
           </div>
 
           <div className="pageContentEditor">
-            <div>
-              {pageContent}
-              {this.props.addingElement ? <LoadSpinner /> : ""}
-            </div>
+            <div>{pageContent}</div>
             <form onSubmit={this.addSectionHelper.bind(this)}>
               <Input placeholder="content type" />
-              <TextArea name="content" placeholder="content" />
-              <Button type="submit" text="create new element" />
+              <TextArea title="content" placeholder="content" />
+
+              {this.props.addingElement ? (
+                <LoadSpinner />
+              ) : (
+                <Button type="submit" text="create new element" />
+              )}
             </form>
           </div>
         </div>

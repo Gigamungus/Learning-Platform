@@ -17,16 +17,6 @@
     text-transform: capitalize;
 }
 
-.PageCreator .pageTitleEditor h2 {
-    margin-bottom: 10px;
+.PageCreator>* .Button {
+    margin-top: 10px;
 }
-
-.PageCreator .pageTitleEditor form>* {
-    margin-bottom: 10px;
-}
-
-.PageCreator .pageDescriptionEditor p {
-    margin-bottom: 10px;
-}
-
-/* .PageCreator . */
