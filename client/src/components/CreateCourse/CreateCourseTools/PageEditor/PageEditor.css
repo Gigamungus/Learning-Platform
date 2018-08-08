@@ -21,6 +21,10 @@
     margin-bottom: 10px;
 }
 
+.PageCreator .pageTitleEditor form>* {
+    margin-bottom: 10px;
+}
+
 .PageCreator .pageDescriptionEditor p {
     margin-bottom: 10px;
 }

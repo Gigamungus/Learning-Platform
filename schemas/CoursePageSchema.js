@@ -15,7 +15,10 @@ const coursePageSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "CourseSchema"
   },
-  elements: [{ elementType: String, elementContent: String }]
+  elements: {
+    type: Array,
+    default: []
+  }
 });
 
 module.exports = CoursePage = mongoose.model("CoursePage", coursePageSchema);

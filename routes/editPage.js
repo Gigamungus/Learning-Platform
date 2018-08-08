@@ -49,7 +49,7 @@ const editPage = (req, res) => {
                   error.error = "could not authenticate user";
                   res.json(error);
                 } else {
-                  let elements = page.elements;
+                  let elements = page.elements.slice();
                   if (req.body.newElement) {
                     elements.push(req.body.newElement);
                   }
@@ -72,6 +72,41 @@ const editPage = (req, res) => {
                         res.json(error);
                       } else {
                         res.json(page);
+                        CourseSection.findById(
+                          page.parentSection,
+                          (err, section) => {
+                            if (err) {
+                              error.error = err;
+                              res.json(error);
+                            } else if (!section) {
+                              error.error = "could not find section";
+                              res.json(error);
+                            } else {
+                              section.pages = section.pages.map(sectionPage => {
+                                return String(sectionPage._id) ===
+                                  String(page._id)
+                                  ? Object.assign(sectionPage, {
+                                      pageTitle: page.pageTitle
+                                    })
+                                  : sectionPage;
+                              });
+                              CourseSection.findByIdAndUpdate(
+                                page.parentSection,
+                                section,
+                                { new: true },
+                                (err, section) => {
+                                  if (err) {
+                                    error.error = err;
+                                    res.json(error);
+                                  } else if (!section) {
+                                    error.error = "could not find section";
+                                    res.json(section);
+                                  }
+                                }
+                              );
+                            }
+                          }
+                        );
                       }
                     }
                   );

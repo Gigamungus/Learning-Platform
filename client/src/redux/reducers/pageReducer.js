@@ -1,9 +1,12 @@
-import { GET_PAGE_CONTENT } from "./../actionCreators/index";
+import { GET_PAGE_CONTENT, EDIT_PAGE } from "./../actionCreators/index";
 
 const initialState = {
   loadingPageContent: false,
   loadedPageContent: false,
-  pageContent: undefined
+  pageContent: undefined,
+  editingTitle: false,
+  editingDescription: false,
+  addingElement: false
 };
 
 const page = (state = initialState, action) => {
@@ -19,6 +22,45 @@ const page = (state = initialState, action) => {
         loadingPageContent: false,
         loadedPageContent: true,
         pageContent: action.content
+      });
+
+    case EDIT_PAGE.EDITING_PAGE_TITLE:
+      return Object.assign({}, state, {
+        editingTitle: true
+      });
+
+    case EDIT_PAGE.EDITED_PAGE_TITLE:
+      return Object.assign({}, state, {
+        editingTitle: false,
+        pageContent: Object.assign({}, state.pageContent, {
+          pageTitle: action.newTitle
+        })
+      });
+
+    case EDIT_PAGE.EDITING_DESCRIPTION:
+      return Object.assign({}, state, {
+        editingDescription: true
+      });
+
+    case EDIT_PAGE.EDITED_DESCRIPTION:
+      return Object.assign({}, state, {
+        editingDescription: false,
+        pageContent: Object.assign({}, state.pageContent, {
+          pageDescription: action.newDescription
+        })
+      });
+
+    case EDIT_PAGE.ADDING_ELEMENT:
+      return Object.assign({}, state, {
+        addingElement: true
+      });
+
+    case EDIT_PAGE.ADDED_ELEMENT:
+      return Object.assign({}, state, {
+        addingElement: false,
+        pageContent: Object.assign({}, state.pageContent, {
+          elements: action.newElements
+        })
       });
 
     default:
