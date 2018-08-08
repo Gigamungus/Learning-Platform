@@ -10,6 +10,9 @@
 .PageCreator a {
     color: steelblue;
     text-decoration: none;
+    background-color: black;
+    border-radius: 4px;
+    padding: 11px;
 }
 
 .PageCreator .pageTitleEditor {

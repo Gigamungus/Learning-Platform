@@ -62,6 +62,15 @@ class CourseCreatorDashboard extends Component {
 
       let page = (
         <div className="CourseCreatorDashboard">
+          <div className="sectionEditorLink">
+            <Link
+              to={`/courseeditor/${
+                this.props.match.params.courseId
+              }/sectioneditor`}
+            >
+              Edit course content
+            </Link>
+          </div>
           <div>
             <Button
               text="save changes"
@@ -89,17 +98,7 @@ class CourseCreatorDashboard extends Component {
             onChange={this.imageChangeHelper.bind(this)}
           />
           <img src={course.thumbnailImg} alt="course thumbnail" />
-          <div className="sectionEditor">
-            <div className="sectionEditorLink">
-              <Link
-                to={`/courseeditor/${
-                  this.props.match.params.courseId
-                }/sectioneditor`}
-              >
-                Edit course content
-              </Link>
-            </div>
-          </div>
+          <div className="sectionEditor" />
         </div>
       );
 

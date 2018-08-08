@@ -52,6 +52,7 @@ class SectionEditor extends Component {
         <div className="SectionEditor">
           <Link
             to={`/courseeditor/${this.props.match.params.courseId}/dashboard`}
+            className="dashboardLink"
           >
             go back to dashboard
           </Link>

@@ -5,8 +5,16 @@ import { Link } from "react-router-dom";
 import TextArea from "./../../../TextArea/TextArea";
 import Input from "./../../../Input/Input";
 import Button from "../../../Button/Button";
+import DropdownMenu from "./../../../DropdownMenu/DropdownMenu";
+import PageTextElementEditor from "./../PageElementEditor/PageTextElementEditor/PageTextElementEditor";
+import PageImageElementEditor from "./../PageElementEditor/PageImageElementEditor/PageImageElementEditor";
+import PageYoutubeVideoElementEditor from "./../PageElementEditor/PageYoutubeVideoElementEditor/PageYoutubeVideoElementEditor";
 
 class PageEditor extends Component {
+  constructor(props) {
+    super(props);
+    this.pageContent = React.createRef();
+  }
   componentDidMount() {
     this.props.getPageContent(this.props.match.params.pageId, this.props.JWT);
     this.persistentGetPageContent = setInterval(() => {
@@ -51,10 +59,35 @@ class PageEditor extends Component {
     ) {
       return <LoadSpinner />;
     } else {
-      let pageContent = this.props.pageContent.elements.map(element => {
-        console.log(element);
-        return element.sectionContent;
-      });
+      let pageContent = this.props.pageContent.elements.map(
+        (element, index) => {
+          switch (element.sectionType.toLowerCase()) {
+            case "text":
+              return (
+                <PageTextElementEditor
+                  key={index}
+                  text={element.sectionContent}
+                />
+              );
+            case "image":
+              return (
+                <PageImageElementEditor
+                  key={index}
+                  imageURL={element.sectionContent}
+                />
+              );
+            case "youtube-video":
+              return (
+                <PageYoutubeVideoElementEditor
+                  key={index}
+                  videoURL={element.sectionContent}
+                />
+              );
+            default:
+              return "unsupported content-type";
+          }
+        }
+      );
       return (
         <div className="PageCreator">
           <div>
@@ -100,9 +133,13 @@ class PageEditor extends Component {
           </div>
 
           <div className="pageContentEditor">
-            <div>{pageContent}</div>
+            <div ref={this.pageContent}>{pageContent}</div>
             <form onSubmit={this.addSectionHelper.bind(this)}>
-              <Input title="content" placeholder="content type" />
+              <DropdownMenu
+                title="content-type"
+                options={["text", "image", "youtube-video"]}
+              />
+
               <TextArea placeholder="content" rows="5" />
 
               {this.props.addingElement ? (

@@ -1,0 +1,14 @@
+.DropdownMenu select {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #555555;
+    color: white;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.DropdownMenu .DropdownTitle {
+    text-transform: capitalize;
+}

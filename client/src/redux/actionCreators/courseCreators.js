@@ -123,6 +123,6 @@ export const saveCourseChanges = (courseId, JWT, courseEdit) => {
       })
     })
       .then(data => data.json())
-      .then(data => console.log(data));
+      .then(data => console.log("changes saved"));
   };
 };
