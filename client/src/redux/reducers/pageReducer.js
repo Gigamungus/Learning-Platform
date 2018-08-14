@@ -6,7 +6,8 @@ const initialState = {
   pageContent: undefined,
   editingTitle: false,
   editingDescription: false,
-  addingElement: false
+  addingElement: false,
+  contentToAddType: "text"
 };
 
 const page = (state = initialState, action) => {
@@ -61,6 +62,11 @@ const page = (state = initialState, action) => {
         pageContent: Object.assign({}, state.pageContent, {
           elements: action.newElements
         })
+      });
+
+    case EDIT_PAGE.CHANGE_CONTENT_TYPE:
+      return Object.assign({}, state, {
+        contentToAddType: action.newType
       });
 
     default:

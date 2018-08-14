@@ -1,5 +1,10 @@
 import secret from "../../config/secrets";
-import { LOAD_SECTIONS, EDIT_COURSE, EDITABLE_SECTION } from "./index";
+import {
+  LOAD_SECTIONS,
+  EDIT_COURSE,
+  EDITABLE_SECTION,
+  VIEW_COURSE
+} from "./index";
 
 const apiLocation = secret.apiLocation;
 
@@ -197,4 +202,80 @@ export const createdNewPage = (position, page) => ({
   type: EDITABLE_SECTION.CREATED_NEW_PAGE,
   position,
   page
+});
+
+export const getSectionsToView = (courseId, JWT) => {
+  return dispatch => {
+    dispatch(gettingSectionsToView());
+    fetch(`${apiLocation}/api/getsections/${courseId}`, {
+      method: "GET",
+      headers: {
+        authorization: `bearer ${JWT}`
+      }
+    })
+      .then(data => {
+        if (data.status === 404) {
+          return { error: "could not reach route" };
+        } else {
+          return data.json();
+        }
+      })
+      .then(data => {
+        if (data.error) {
+          console.log(data);
+        } else {
+          dispatch(gotSectionsToView(data));
+        }
+      });
+  };
+};
+
+export const gettingSectionsToView = () => ({
+  type: VIEW_COURSE.GETTING_SECTIONS
+});
+
+export const gotSectionsToView = sections => ({
+  type: VIEW_COURSE.GOT_SECTIONS,
+  sections
+});
+
+export const toggleSectionViewerExpanded = position => ({
+  type: VIEW_COURSE.EXPAND_SECTION,
+  position
+});
+
+export const loadPagesToView = (position, sectionId, JWT) => {
+  return dispatch => {
+    dispatch(loadingPagesToView(position));
+    return fetch(`${apiLocation}/api/loadsectioncontent/${sectionId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `bearer ${JWT}`
+      }
+    })
+      .then(data => {
+        if (data.status === 404) {
+          return { error: "failed to fetch" };
+        } else {
+          return data.json();
+        }
+      })
+      .then(data => {
+        if (data.error) {
+        } else {
+          dispatch(loadedPagesToView(position, data.pages));
+        }
+      });
+  };
+};
+
+export const loadingPagesToView = position => ({
+  type: VIEW_COURSE.LOADING_PAGES_TO_VIEW,
+  position
+});
+
+export const loadedPagesToView = (position, pages) => ({
+  type: VIEW_COURSE.LOADED_PAGES_TO_VIEW,
+  position,
+  pages
 });

@@ -6,6 +6,7 @@ import HomeScreenContainer from "./../HomeScreen/HomeScreenContainer";
 import CreateCourseContainer from "./../CreateCourse/CreateCourseContainer";
 import PageEditorContainer from "./../CreateCourse/CreateCourseTools/PageEditor/PageEditorContainer";
 import SectionEditorContainer from "./../CreateCourse/CreateCourseTools/SectionEditor/SectionEditorContainer";
+import ViewCourseIndexContainer from "./../ViewCourse/ViewCourseIndexContainer";
 
 class Body extends Component {
   render() {
@@ -25,6 +26,7 @@ class Body extends Component {
           path="/courseeditor/:courseId/sectioneditor"
           component={SectionEditorContainer}
         />
+        <Route path="/courses/:courseId" component={ViewCourseIndexContainer} />
       </div>
     );
   }

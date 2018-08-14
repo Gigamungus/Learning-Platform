@@ -1,0 +1,16 @@
+.SectionViewer {
+}
+
+.SectionViewer .SectionHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.SectionViewer .SectionHeader:hover {
+    cursor: pointer;
+}
+
+.SectionViewer .SectionHeader>* {
+    padding: 25px;
+}

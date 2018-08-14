@@ -21,6 +21,7 @@ export const getPageContent = (pageId, JWT) => {
       })
       .then(data => {
         if (data.error) {
+          console.log(pageId, JWT);
           console.log(data);
         } else {
           dispatch(gotPageContent(data));
@@ -100,4 +101,9 @@ export const addingPageElement = () => ({
 export const addedPageElement = newElements => ({
   type: EDIT_PAGE.ADDED_ELEMENT,
   newElements
+});
+
+export const changeContentToAddType = newType => ({
+  type: EDIT_PAGE.CHANGE_CONTENT_TYPE,
+  newType
 });

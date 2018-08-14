@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const secretOrKey = process.env.secret || require("./../config/secrets").secret;
 
 const getPageContent = (req, res) => {
+  console.log(req.params);
   let error = { error: undefined };
   let pageId = req.params.pageId;
   CoursePage.findById(pageId, (err, page) => {

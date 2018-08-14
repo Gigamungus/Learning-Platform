@@ -1,13 +1,13 @@
-.PageCreator {
+.PageViewer {
     width: 90%;
     margin: auto;
 }
 
-.PageCreator>* {
+.PageViewer>* {
     margin: 20px 0;
 }
 
-.PageCreator a {
+.PageViewer a {
     color: steelblue;
     text-decoration: none;
     background-color: black;
@@ -15,31 +15,27 @@
     padding: 11px;
 }
 
-.PageCreator .pageTitleEditor {
+.PageViewer .pageTitleViewer {
     text-align: center;
     text-transform: capitalize;
 }
 
-.PageCreator>* {
+.PageViewer>* {
     margin: 30px 0;
 }
 
-.PageCreator form>* {
-    margin: 10px 0;
-}
-
 @media only screen and (min-width: 1024px) {
-    .PageCreator .titleAndDescriptionEditors {
+    .PageViewer .titleAndDescriptionViewer {
         display: flex;
         width: 100%;
     }
-    .PageCreator .titleAndDescriptionEditors>* {
+    .PageViewer .titleAndDescriptionViewer>* {
         width: 50%;
     }
-    .PageCreator .pageTitleEditor {
+    .PageViewer .pageTitleViewer {
         margin-right: 15px;
     }
-    .PageCreator .pageDescriptionEditor {
+    .PageViewer .pageDescriptionViewer {
         margin-left: 15px;
     }
 }

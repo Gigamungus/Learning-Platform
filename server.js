@@ -46,6 +46,7 @@ const updateSectionDescription = require("./routes/updateSectionDescription");
 const createNewPage = require("./routes/createNewPage");
 const getPageContent = require("./routes/getPageContent");
 const editPage = require("./routes/editPage");
+const getSections = require("./routes/getSections");
 
 mongoose.connect(
   DBURL,
@@ -126,6 +127,10 @@ app.get("/api/loadsectioncontent/:sectionId", (req, res) => {
 
 app.get("/api/getpagecontent/:pageId", (req, res) => {
   getPageContent(req, res);
+});
+
+app.get("/api/getsections/:courseId", (req, res) => {
+  getSections(req, res);
 });
 
 app.get("*", (req, res) => {

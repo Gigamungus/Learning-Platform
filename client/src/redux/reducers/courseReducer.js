@@ -2,7 +2,8 @@ import {
   CREATE_COURSE_SKELETON,
   RESET_PAGE,
   LOAD_COURSE_TO_EDIT,
-  EDIT_COURSE
+  EDIT_COURSE,
+  VIEW_COURSE
 } from "../actionCreators/index";
 
 const initialState = {
@@ -11,8 +12,19 @@ const initialState = {
   editingCourseId: undefined,
   loadingCourseToEdit: false,
   loadedCourseToEdit: false,
+  loadingSectionToView: false,
+  loadedSectionToView: false,
+  sectionsToView: undefined,
   courseToEditTopLevel: undefined,
   userMayNotViewCourse: false
+};
+
+const defaultSectionToView = {
+  _id: undefined,
+  sectionTitle: undefined,
+  loadingPages: false,
+  loadedPages: false,
+  pages: undefined
 };
 
 const course = (state = initialState, action) => {
@@ -83,6 +95,54 @@ const course = (state = initialState, action) => {
           thumbnailImg: action.newImage
         })
       });
+
+    case VIEW_COURSE.GETTING_SECTIONS:
+      return Object.assign({}, state, {
+        loadingSectionToView: true,
+        loadedSectionToView: false
+      });
+
+    case VIEW_COURSE.GOT_SECTIONS:
+      let sections = action.sections.slice();
+      sections = sections.map(section =>
+        Object.assign({}, defaultSectionToView, section)
+      );
+      return Object.assign({}, state, {
+        loadingSectionToView: false,
+        loadedSectionToView: true,
+        sectionsToView: sections
+      });
+
+    case VIEW_COURSE.EXPAND_SECTION:
+      sections = state.sectionsToView.slice();
+      sections[action.position].expanded = !sections[action.position].expanded;
+
+      return Object.assign({}, state, {
+        sectionsToView: sections
+      });
+
+    case VIEW_COURSE.LOADING_PAGES_TO_VIEW:
+      let loadingPagesToViewState = Object.assign({}, state);
+      loadingPagesToViewState.sectionsToView[
+        action.position
+      ].loadingPages = true;
+
+      return loadingPagesToViewState;
+
+    case VIEW_COURSE.LOADED_PAGES_TO_VIEW:
+      let loadedPagesToViewState = Object.assign({}, state);
+
+      loadedPagesToViewState.sectionsToView[
+        action.position
+      ].loadingPages = false;
+
+      loadedPagesToViewState.sectionsToView[action.position].loadedPages = true;
+
+      loadedPagesToViewState.sectionsToView[action.position].pages =
+        action.pages;
+
+      return loadedPagesToViewState;
+
     default:
       return state;
   }

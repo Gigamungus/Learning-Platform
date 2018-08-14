@@ -1,20 +1,16 @@
 import { connect } from "react-redux";
-import PageEditor from "./PageEditor";
+import PageViewer from "./PageViewer";
 import {
   getPageContent,
   editPage,
   changeContentToAddType
-} from "./../../../../redux/actionCreators/pageCreators";
+} from "./../../../redux/actionCreators/pageCreators";
 
 const mapStateToProps = state => ({
   JWT: state.user.authJWT,
   loadingPageContent: state.page.loadingPageContent,
   loadedPageContent: state.page.loadedPageContent,
-  pageContent: state.page.pageContent,
-  editingTitle: state.page.editingTitle,
-  editingDescription: state.page.editingDescription,
-  addingElement: state.page.addingElement,
-  contentToAddType: state.page.contentToAddType
+  pageContent: state.page.pageContent
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -31,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PageEditor);
+)(PageViewer);
